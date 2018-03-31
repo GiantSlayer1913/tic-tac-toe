@@ -5,6 +5,9 @@
 
 // load manifests
 // scripts
+
+// DO NOT TYPE CODE IN THIS FILE
+
 require('./assets/scripts/index.js')
 
 // styles
