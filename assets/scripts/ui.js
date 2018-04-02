@@ -1,7 +1,8 @@
 const store = require('./store')
 
-const signUpSuccess = function () {
+const signUpSuccess = function (data) {
   console.log('ui-signUpSuccess working')
+  console.log(data)
   $('#message').text('Successfully signed up')
   $('#message').css('background-color', 'green')
 }
@@ -12,6 +13,7 @@ const signUpFailure = function () {
 }
 
 const signInSuccess = function (data) {
+  console.log('ui.signIn working')
   console.log(data)
   $('#message').text('Successfully signed in')
   $('#message').css('background-color', 'green')
@@ -33,23 +35,23 @@ const changePasswordFailure = function () {
   $('#message').css('background-color', 'red')
 }
 
-// const signOutSuccess = function (data) {
-//   console.log(data)
-//   $('#message').text('Successfully signed out')
-//   $('#message').css('background-color', 'green')
-//   store.user = null
-// }
-// const signOutFailure = function () {
-//   $('#message').text('Failure to sign out')
-//   $('#message').css('background-color', 'red')
-// }
+const signOutSuccess = function (data) {
+  console.log(data)
+  $('#message').text('Successfully signed out')
+  $('#message').css('background-color', 'green')
+  store.user = null
+}
+const signOutFailure = function () {
+  $('#message').text('Failure to sign out')
+  $('#message').css('background-color', 'red')
+}
 module.exports = {
   signUpSuccess,
   signUpFailure,
   signInSuccess,
   signInFailure,
   changePasswordSuccess,
-  changePasswordFailure
-  // signOutSuccess,
-  // signOutFailure
+  changePasswordFailure,
+  signOutSuccess,
+  signOutFailure
 }

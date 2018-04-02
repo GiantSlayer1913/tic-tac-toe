@@ -11,9 +11,9 @@ const continueGame = () => {
 // Remeber to add jquery to events.js
 //  $('#nextMove').on('submit', onNextMove)
 }
-// game logic for determining Player 1 winner or Player 2 winner
-const gameBoard = []
-const gameLogic = function (event) {
+// gameBoard for determining Player 1 winner or Player 2 winner
+
+const gameBoard = function () {
   for (let i = 0; i < gameBoard.length; i++) {
     if (this[0] && this[1] && this[2] === 'X') {
       xWins()
@@ -54,7 +54,6 @@ const gameLogic = function (event) {
 }
 
 module.exports = {
-  gameLogic,
   gameBoard,
   xWins,
   oWins
