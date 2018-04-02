@@ -8,9 +8,10 @@ const oWins = () => {
 }
 // function to continue playing game (waiting for on submit event called onNextMove)
 const continueGame = () => {
+// Remeber to add jquery to events.js
 //  $('#nextMove').on('submit', onNextMove)
 }
-// game logic for determining Player 1 winner
+// game logic for determining Player 1 winner or Player 2 winner
 const gameBoard = []
 const gameLogic = function (event) {
   for (let i = 0; i < gameBoard.length; i++) {
