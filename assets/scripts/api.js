@@ -13,17 +13,17 @@ const signUp = function (data) {
   })
 }
 
-// const signIn = function (data) {
-//   console.log('sign-in logging')
-//   return $.ajax({
-//     url: config.apiUrl + '/sign-in',
-//     method: 'POST',
-//     // headers: {
-//     //   contentType: 'application/json'
-//     // },
-//     data
-//   })
-// }
+const signIn = function (data) {
+  console.log('sign-in logging')
+  return $.ajax({
+    url: config.apiUrl + '/sign-in',
+    method: 'POST',
+    headers: {
+      contentType: 'application/json'
+    },
+    data
+  })
+}
 //
 // const signOut = function () {
 //   console.log('sign-out logging')
@@ -39,7 +39,7 @@ const signUp = function (data) {
 module.exports = {
   config,
   store,
-  signUp
-  // signIn,
+  signUp,
+  signIn
   // signOut
 }

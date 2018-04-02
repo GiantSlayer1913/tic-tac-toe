@@ -9,16 +9,16 @@ const signUpFailure = function () {
   $('#message').css('background-color', 'red')
 }
 
-// const signInSuccess = function (data) {
-//   console.log(data)
-//   $('#message').text('Successfully signed in')
-//   $('#message').css('background-color', 'green')
-//   store.user = data.user
-// }
-// const signInFailure = function () {
-//   $('#message').text('Failure signing in')
-//   $('#message').css('background-color', 'red')
-// }
+const signInSuccess = function (data) {
+  console.log(data)
+  $('#message').text('Successfully signed in')
+  $('#message').css('background-color', 'green')
+  store.user = data.user
+}
+const signInFailure = function () {
+  $('#message').text('Failure signing in')
+  $('#message').css('background-color', 'red')
+}
 //
 // const signOutSuccess = function (data) {
 //   $('#message').text('Successfully signed out')
@@ -32,9 +32,9 @@ const signUpFailure = function () {
 module.exports = {
   store,
   signUpSuccess,
-  signUpFailure
-  // signInSuccess,
-  // signInFailure,
+  signUpFailure,
+  signInSuccess,
+  signInFailure
   // signOutSuccess,
   // signOutFailure
 }
