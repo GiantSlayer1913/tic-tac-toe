@@ -1,59 +1,80 @@
-// function to declare Player 1 winner
 const xWins = () => {
   console.log('Player 1 Wins!')
 }
-// function to declare Player 2 winner
 const oWins = () => {
   console.log('Player 2 Wins!')
 }
-// function to continue playing game (waiting for on submit event called onNextMove)
-const continueGame = () => {
-// Remeber to add jquery to events.js
-//  $('#nextMove').on('submit', onNextMove)
-}
-// gameBoard for determining Player 1 winner or Player 2 winner
 
-const gameBoard = function () {
-  for (let i = 0; i < gameBoard.length; i++) {
-    if (this[0] && this[1] && this[2] === 'X') {
-      xWins()
-    } else if (this[3] && this[4] && this[5] === 'X') {
-      xWins()
-    } else if (this[6] && this[7] && this[8] === 'X') {
-      xWins()
-    } else if (this[0] && this[3] && this[6] === 'X') {
-      xWins()
-    } else if (this[1] && this[4] && this[7] === 'X') {
-      xWins()
-    } else if (this[2] && this[5] && this[8] === 'X') {
-      xWins()
-    } else if (this[0] && this[4] && this[8] === 'X') {
-      xWins()
-    } else if (this[2] && this[4] && this[6] === 'X') {
-      xWins()
-    } else if (this[0] && this[1] && this[2] === 'O') {
-      oWins()
-    } else if (this[3] && this[4] && this[5] === 'O') {
-      oWins()
-    } else if (this[6] && this[7] && this[8] === 'O') {
-      oWins()
-    } else if (this[0] && this[3] && this[6] === 'O') {
-      oWins()
-    } else if (this[1] && this[4] && this[7] === 'O') {
-      oWins()
-    } else if (this[2] && this[5] && this[8] === 'O') {
-      oWins()
-    } else if (this[0] && this[4] && this[8] === 'O') {
-      oWins()
-    } else if (this[2] && this[4] && this[6] === 'O') {
-      oWins()
-    } else {
-      continueGame()
-    }
+// const addToBoard = (position) => {
+//   gameBoard[position] = currentPlayer
+//   checkForWinner()
+//   if (currentPlayer === 'X') {
+//     currentPlayer = 'O'
+//   } else {
+//     currentPlayer = 'X'
+//   }
+// }
+
+const gameBoard = ['', '', '', '', '', '', '', '', '']
+let currentPlayer = 'X'
+
+const checkForWinner = function () {
+  if (gameBoard[0] === gameBoard[1] && gameBoard[1] === gameBoard[2] && gameBoard[2] !== '') {
+    xWins()
+  } else if (gameBoard[3] === gameBoard[4] && gameBoard[4] === gameBoard[5] && gameBoard[5] !== '') {
+    xWins()
+  } else if (gameBoard[6] === gameBoard[7] && gameBoard[7] === gameBoard[8] && gameBoard[8] !== '') {
+    xWins()
+  } else if (gameBoard[0] === gameBoard[3] && gameBoard[3] === gameBoard[6] && gameBoard[6] !== '') {
+    xWins()
+  } else if (gameBoard[1] === gameBoard[4] && gameBoard[4] === gameBoard[7] && gameBoard[7] !== '') {
+    xWins()
+  } else if (gameBoard[2] === gameBoard[5] && gameBoard[5] === gameBoard[8] && gameBoard[8] !== '') {
+    xWins()
+  } else if (gameBoard[0] === gameBoard[4] && gameBoard[4] === gameBoard[8] && gameBoard[8] !== '') {
+    xWins()
+  } else if (gameBoard[2] === gameBoard[4] && gameBoard[4] === gameBoard[6] && gameBoard[6] !== '') {
+    xWins()
+  } else if (gameBoard[0] === gameBoard[1] && gameBoard[1] === gameBoard[2] && gameBoard[2] !== '') {
+    oWins()
+  } else if (gameBoard[3] === gameBoard[4] && gameBoard[4] === gameBoard[5] && gameBoard[5] !== '') {
+    oWins()
+  } else if (gameBoard[6] === gameBoard[7] && gameBoard[7] === gameBoard[8] && gameBoard[8] !== '') {
+    oWins()
+  } else if (gameBoard[0] === gameBoard[3] && gameBoard[3] === gameBoard[6] && gameBoard[6] !== '') {
+    oWins()
+  } else if (gameBoard[1] === gameBoard[4] && gameBoard[4] === gameBoard[7] && gameBoard[7] !== '') {
+    oWins()
+  } else if (gameBoard[2] === gameBoard[5] && gameBoard[5] === gameBoard[8] && gameBoard[8] !== '') {
+    oWins()
+  } else if (gameBoard[0] === gameBoard[4] && gameBoard[4] === gameBoard[8] && gameBoard[8] !== '') {
+    oWins()
+  } else if (gameBoard[2] === gameBoard[4] && gameBoard[4] === gameBoard[6] && gameBoard[6] !== '') {
+    oWins()
+  } else {
   }
 }
 
+const addToBoard = (position) => {
+  gameBoard[position] = currentPlayer
+  checkForWinner()
+  if (currentPlayer === 'X') {
+    currentPlayer = 'O'
+  } else {
+    currentPlayer = 'X'
+  }
+}
+
+// addToBoard(0)
+// addToBoard(1)
+// addToBoard(3)
+// addToBoard(5)
+// addToBoard(4)
+// addToBoard(6)
+// addToBoard(8)
+
 module.exports = {
+  addToBoard,
   gameBoard,
   xWins,
   oWins

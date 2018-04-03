@@ -30,6 +30,7 @@ h4 {
 .row1 > #space0, #space1, #space2 {
   background-color: #e7e7e7;
   border: 3px solid black;
+  display: inline-block;
   font-size: 100px;
   height: 200px;
   margin: 10px auto;
@@ -41,6 +42,7 @@ h4 {
 .row2 > #space3, #space4, #space5 {
   background-color: #e7e7e7;
   border: 3px solid black;
+  display: inline-block;
   font-size: 100px;
   height: 200px;
   margin: 10px auto;
@@ -52,6 +54,7 @@ h4 {
 .row3 > #space6, #space7, #space8 {
   background-color: #e7e7e7;
   border: 3px solid black;
+  display: inline-block;
   font-size: 100px;
   height: 200px;
   margin: 10px auto;
@@ -60,7 +63,13 @@ h4 {
   width: 200px;
 }
 
-.start-finish-buttons {
+.new-end-game {
+  padding: 25px;
+  text-align: center;
+  font-size: 20px;
+}
+
+.players {
   padding: 25px;
   text-align: center;
   font-size: 20px;
