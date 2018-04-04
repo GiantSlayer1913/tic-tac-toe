@@ -1,6 +1,7 @@
 const config = require('./config')
 const store = require('./store')
 
+// Sign-up
 const signUp = function (data) {
   console.log('sign-up logging')
   return $.ajax({
@@ -13,6 +14,7 @@ const signUp = function (data) {
   })
 }
 
+// Sign-in
 const signIn = function (data) {
   console.log('sign-in logging')
   return $.ajax({
@@ -25,6 +27,7 @@ const signIn = function (data) {
   })
 }
 
+// Change Password
 const changePassword = function (data) {
   console.log('change-Password logging')
   return $.ajax({
@@ -38,6 +41,7 @@ const changePassword = function (data) {
   })
 }
 
+// Sign-out
 const signOut = function () {
   console.log('sign-out logging')
   return $.ajax({
@@ -49,9 +53,15 @@ const signOut = function () {
     }
   })
 }
+
+// Gameboard
+const gameBoard = () => {
+  console.log('game board active')
+}
 module.exports = {
   signUp,
   signIn,
   changePassword,
-  signOut
+  signOut,
+  gameBoard
 }

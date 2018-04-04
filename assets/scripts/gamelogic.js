@@ -11,36 +11,52 @@ let currentPlayer = 'X'
 const checkForWinner = function () {
   if (gameBoard[0] === gameBoard[1] && gameBoard[1] === gameBoard[2] && gameBoard[2] !== '') {
     xWins()
+    // Function to clear gameboard
   } else if (gameBoard[3] === gameBoard[4] && gameBoard[4] === gameBoard[5] && gameBoard[5] !== '') {
     xWins()
+    // Function to clear gameboard
   } else if (gameBoard[6] === gameBoard[7] && gameBoard[7] === gameBoard[8] && gameBoard[8] !== '') {
     xWins()
+    // Function to clear gameboard
   } else if (gameBoard[0] === gameBoard[3] && gameBoard[3] === gameBoard[6] && gameBoard[6] !== '') {
     xWins()
+    // Function to clear gameboard
   } else if (gameBoard[1] === gameBoard[4] && gameBoard[4] === gameBoard[7] && gameBoard[7] !== '') {
     xWins()
+    // Function to clear gameboard
   } else if (gameBoard[2] === gameBoard[5] && gameBoard[5] === gameBoard[8] && gameBoard[8] !== '') {
     xWins()
+    // Function to clear gameboard
   } else if (gameBoard[0] === gameBoard[4] && gameBoard[4] === gameBoard[8] && gameBoard[8] !== '') {
     xWins()
+    // Function to clear gameboard
   } else if (gameBoard[2] === gameBoard[4] && gameBoard[4] === gameBoard[6] && gameBoard[6] !== '') {
     xWins()
+    // Function to clear gameboard
   } else if (gameBoard[0] === gameBoard[1] && gameBoard[1] === gameBoard[2] && gameBoard[2] !== '') {
     oWins()
+    // Function to clear gameboard
   } else if (gameBoard[3] === gameBoard[4] && gameBoard[4] === gameBoard[5] && gameBoard[5] !== '') {
     oWins()
+    // Function to clear gameboard
   } else if (gameBoard[6] === gameBoard[7] && gameBoard[7] === gameBoard[8] && gameBoard[8] !== '') {
     oWins()
+    // Function to clear gameboard
   } else if (gameBoard[0] === gameBoard[3] && gameBoard[3] === gameBoard[6] && gameBoard[6] !== '') {
     oWins()
+    // Function to clear gameboard
   } else if (gameBoard[1] === gameBoard[4] && gameBoard[4] === gameBoard[7] && gameBoard[7] !== '') {
     oWins()
+    // Function to clear gameboard
   } else if (gameBoard[2] === gameBoard[5] && gameBoard[5] === gameBoard[8] && gameBoard[8] !== '') {
     oWins()
+    // Function to clear gameboard
   } else if (gameBoard[0] === gameBoard[4] && gameBoard[4] === gameBoard[8] && gameBoard[8] !== '') {
     oWins()
+    // Function to clear gameboard
   } else if (gameBoard[2] === gameBoard[4] && gameBoard[4] === gameBoard[6] && gameBoard[6] !== '') {
     oWins()
+    // Function to clear gameboard
   } else {
   }
 }
