@@ -5,16 +5,6 @@ const oWins = () => {
   console.log('Player 2 Wins!')
 }
 
-// const addToBoard = (position) => {
-//   gameBoard[position] = currentPlayer
-//   checkForWinner()
-//   if (currentPlayer === 'X') {
-//     currentPlayer = 'O'
-//   } else {
-//     currentPlayer = 'X'
-//   }
-// }
-
 const gameBoard = ['', '', '', '', '', '', '', '', '']
 let currentPlayer = 'X'
 
@@ -64,14 +54,6 @@ const addToBoard = (position) => {
     currentPlayer = 'X'
   }
 }
-
-// addToBoard(0)
-// addToBoard(1)
-// addToBoard(3)
-// addToBoard(5)
-// addToBoard(4)
-// addToBoard(6)
-// addToBoard(8)
 
 module.exports = {
   addToBoard,
