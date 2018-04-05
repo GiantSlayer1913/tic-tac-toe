@@ -13,8 +13,9 @@
     </head>
     <body>
       <h1>Welcome to Tic Tac and Toe!</h1>
-      <h4>Copyright © 2018 Tic Tac Toe LLC</h4>
+      <h4>Copyright © 2018 Tic Tac Toe Accounting LLC</h4>
 
+<div id="message"></div>
       <form id="sign-up" class="border">
         <fieldset>
           <legend>Sign up!</legend>
@@ -24,6 +25,7 @@
           <input type="submit" value="Sign up!">
         </fieldset>
       </form>
+      <br>
 
       <form id="sign-in" class="border">
         <fieldset>
@@ -33,6 +35,18 @@
           <input type="submit" value="Sign in!">
         </fieldset>
       </form>
+      <br>
+
+      <form id="change-password" class="border">
+              <fieldset>
+                <legend>Change Password!</legend>
+                <input type="text" name="credentials[email]" placeholder="Email">
+                <input type="password" name="passwords[old]" placeholder="Old Password">
+                <input type="password" name="passwords[new]" placeholder="New Password">
+                <input type="submit" value="Change Password!">
+              </fieldset>
+            </form>
+            <br>
 
       <form id="sign-out" class="border">
         <fieldset>
@@ -40,11 +54,43 @@
           <input type="submit" value="Sign Out!">
         </fieldset>
       </form>
+      <br>
 
 
-      <div class="gameBoard" .col-md-4 .col-md-4 .col-md-4></div>
+      <!-- <div class="players">
+          <button>Player 1</button>
+          <button>Player 2</button>
+      </div>
+      <br> -->
 
-      <div class="scoreBoard"></div>
+      <div class="gameBoard">
+        <table>
+          <tr>
+            <td class="cell" id=0></td>
+            <td class="cell" id=1></td>
+            <td class="cell" id=2></td>
+          </tr>
+          <tr>
+            <td class="cell" id=3></td>
+            <td class="cell" id=4></td>
+            <td class="cell" id=5></td>
+          </tr>
+          <tr>
+            <td class="cell" id=6></td>
+            <td class="cell" id=7></td>
+            <td class="cell" id=8></td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="endgame">
+        <div class="text"></div>
+        </div>
+            <button onClick="newGame()">New Game</button>
+
+
+
+      <!--<div class="scoreBoard"></div> -->
 
     </body>
 </html>
