@@ -5,7 +5,6 @@
 const api = require('./api')
 const getFormFields = require('../../lib/get-form-fields')
 const ui = require('./ui')
-// const gamelogic = require('./gamelogic')
 
 const onSignUp = function (event) {
   event.preventDefault()
@@ -28,7 +27,6 @@ const onSignIn = function (event) {
 const onChangePassword = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
-  console.log(data)
   api.changePassword(data)
     .then(ui.changePasswordSuccess)
     .catch(ui.changePasswordFailure)
