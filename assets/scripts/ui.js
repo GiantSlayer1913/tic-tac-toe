@@ -52,12 +52,12 @@ const signOutFailure = function () {
 
 // Gameboard functions
 const clickBoardSuccess = () => {
-  $('#message').text('Successfully clicking game board')
-  $('#message').css('background-color', 'green')
+  $('#space0').text('Successfully clicking game board')
+  $('#space0').css('background-color', 'green')
 }
 const clickBoardFailure = () => {
-  $('#message').text('Failure clicking game board')
-  $('#message').css('background-color', 'green')
+  $('#space0').text('Failure clicking game board')
+  $('#space0').css('background-color', 'green')
 }
 
 module.exports = {

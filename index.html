@@ -64,23 +64,30 @@
       <br> -->
 
       <div class="gameBoard">
-          <div class="space0" id="0"></div>
-          <div class="space1" id="1"></div>
-          <div class="space2" id="2"></div>
-          <div class="space3" id="3"></div>
-          <div class="space4" id="4"></div>
-          <div class="space5" id="5"></div>
-          <div class="space6" id="6"></div>
-          <div class="space7" id="7"></div>
-          <div class="space8" id="8"></div>
+        <table>
+          <tr>
+            <td class="cell" id=0></td>
+            <td class="cell" id=1></td>
+            <td class="cell" id=2></td>
+          </tr>
+          <tr>
+            <td class="cell" id=3></td>
+            <td class="cell" id=4></td>
+            <td class="cell" id=5></td>
+          </tr>
+          <tr>
+            <td class="cell" id=6></td>
+            <td class="cell" id=7></td>
+            <td class="cell" id=8></td>
+          </tr>
+        </table>
       </div>
 
-      <div class="new-game">
-          <button>New Game</button>
+      <div class="endgame">
+        <div class="text"></div>
         </div>
-          <div class="end-game">
-          <button>End Game</button>
-      </div>
+            <button onClick="newGame()">New Game</button>
+
 
 
       <!--<div class="scoreBoard"></div> -->

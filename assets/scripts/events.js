@@ -5,8 +5,6 @@
 const api = require('./api')
 const getFormFields = require('../../lib/get-form-fields')
 const ui = require('./ui')
-// require events from gameBoardEvents
-// const gameBoardEvents = require('./gameBoardEvents')
 
 const onSignUp = function (event) {
   event.preventDefault()
@@ -42,12 +40,13 @@ const onSignOut = function () {
 }
 
 // Gameboard events
-const onGameBoard = function () {
-  event.preventDefault()
-  api.gameBoard()
-    .then(ui.clickBoardSuccess)
-    .catch(ui.clickBoardFailure)
-}
+// const onGameBoard = function () {
+//   console.log('inside onGameBoard')
+//   event.preventDefault()
+//   api.gameBoard()
+//     .then(ui.clickBoardSuccess)
+//     .catch(ui.clickBoardFailure)
+// }
 
 // Double check to see if this acutally works!!!
 // const onNewGame = function (event) {
@@ -63,11 +62,12 @@ const addHandlers = () => {
   $('#sign-out').on('submit', onSignOut)
 }
 // Below is addHandlers for gameboard events
-const addGameHandlers = () => {
-  $('.gameboard div').on('click', onGameBoard)
-}
+// const addGameHandlers = () => {
+//   console.log('in gameHandlers')
+//   $('.gameboard div').on('click', onGameBoard)
+// }
 
 module.exports = {
   addHandlers,
-  addGameHandlers
+  // addGameHandlers
 }

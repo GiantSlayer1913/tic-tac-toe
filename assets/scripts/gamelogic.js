@@ -7,6 +7,15 @@ const oWins = () => {
 
 const gameBoard = ['', '', '', '', '', '', '', '', '']
 let currentPlayer = 'X'
+// const addToBoard = (position) => {
+//   gameBoard[position] = currentPlayer
+//   checkForWinner()
+//   if (currentPlayer === 'X') {
+//     currentPlayer = 'O'
+//   } else {
+//     currentPlayer = 'X'
+//   }
+// }
 
 const checkForWinner = function () {
   if (gameBoard[0] === gameBoard[1] && gameBoard[1] === gameBoard[2] && gameBoard[2] !== '') {
@@ -61,18 +70,24 @@ const checkForWinner = function () {
   }
 }
 
-const addToBoard = (position) => {
-  gameBoard[position] = currentPlayer
-  checkForWinner()
-  if (currentPlayer === 'X') {
-    currentPlayer = 'O'
-  } else {
-    currentPlayer = 'X'
+const addToBoard = (square) => {
+  console.log(square.target.id)
+}
+
+const cells = document.querySelectorAll('.cell')
+
+const startGame = () => {
+  document.querySelector('.endgame').style.display = 'none'
+  //  gameBoard = Array.from(Array(9).keys())
+  for (let i = 0; i < cells.length; i++) {
+    cells[i].innerText = ''
+    cells[i].style.removeProperty('background-color')
+    cells[i].addEventListener('click', addToBoard, false)
   }
 }
 
 module.exports = {
-  addToBoard,
+  startGame,
   gameBoard,
   xWins,
   oWins
