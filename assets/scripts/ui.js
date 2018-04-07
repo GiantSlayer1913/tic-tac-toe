@@ -50,16 +50,13 @@ const signOutFailure = function () {
   $('#message').css('background-color', 'red')
 }
 
-// Gameboard functions
-const clickBoardSuccess = () => {
-  $('#space0').text('Successfully clicking game board')
-  $('#space0').css('background-color', 'green')
+// Game History functions
+const gameHistorySuccess = (data) => {
+  $('')
 }
-const clickBoardFailure = () => {
-  $('#space0').text('Failure clicking game board')
-  $('#space0').css('background-color', 'green')
+const gameHistoryFailure = (data) => {
+  $('')
 }
-
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -68,7 +65,5 @@ module.exports = {
   changePasswordSuccess,
   changePasswordFailure,
   signOutSuccess,
-  signOutFailure,
-  clickBoardSuccess,
-  clickBoardFailure
+  signOutFailure
 }

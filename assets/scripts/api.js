@@ -3,7 +3,7 @@ const store = require('./store')
 
 // Sign-up
 const signUp = function (data) {
-  console.log('sign-up logging')
+  console.log('sign-up is working')
   return $.ajax({
     url: config.apiUrl + `/sign-up`,
     method: 'POST',
@@ -16,7 +16,7 @@ const signUp = function (data) {
 
 // Sign-in
 const signIn = function (data) {
-  console.log('sign-in logging')
+  console.log('sign-in is working')
   return $.ajax({
     url: config.apiUrl + `/sign-in`,
     method: 'POST',
@@ -29,7 +29,7 @@ const signIn = function (data) {
 
 // Change Password
 const changePassword = function (data) {
-  console.log('change-Password logging')
+  console.log('change-Password is working')
   return $.ajax({
     url: config.apiUrl + `/change-password/` + store.user.id,
     method: 'PATCH',
@@ -43,7 +43,7 @@ const changePassword = function (data) {
 
 // Sign-out
 const signOut = function () {
-  console.log('sign-out logging')
+  console.log('sign-out is working')
   return $.ajax({
     url: config.apiUrl + `/sign-out/` + store.user.id,
     method: 'DELETE',
@@ -54,14 +54,19 @@ const signOut = function () {
   })
 }
 
-// Gameboard
-const gameBoard = () => {
-  console.log('game board active')
+// Game history
+const gameHistory = (data) => {
+  console.log('game-history is working')
+  return $.ajax({
+    url: config.apiUrl + '/game-history/' + data.user.id,
+    method: 'GET'
+  })
 }
+
 module.exports = {
   signUp,
   signIn,
   changePassword,
   signOut,
-  gameBoard
+  gameHistory
 }

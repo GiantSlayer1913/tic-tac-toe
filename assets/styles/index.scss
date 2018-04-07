@@ -1,5 +1,4 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
-
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
 body {
@@ -22,7 +21,7 @@ h4 {
   padding: 20px;
 }
 
-table {
+.gameBoard {
   background-color: #e7e7e7;
   border: 3px solid black;
   border-collapse: collapse;
@@ -63,8 +62,7 @@ table tr td:last-child {
   border-right: 0;
 }
 
-
-.new-end-game {
+.gameControls {
   padding: 25px;
   text-align: center;
   font-size: 20px;
@@ -75,112 +73,3 @@ table tr td:last-child {
   text-align: center;
   font-size: 20px;
 }
-
-// SCSS for each space on gameBoard
-// .space0 {
-//   background-color: #e7e7e7;
-//   border: 3px solid black;
-//   display: inline-block;
-//   font-size: 100px;
-//   height: 200px;
-//   margin: 10px auto;
-//   padding: 16px;
-//   text-align: center;
-//   width: 200px;
-// }
-//
-// .space1 {
-//   background-color: #e7e7e7;
-//   border: 3px solid black;
-//   display: inline-block;
-//   font-size: 100px;
-//   height: 200px;
-//   margin: 10px auto;
-//   padding: 16px;
-//   text-align: center;
-//   width: 200px;
-// }
-//
-// .space2 {
-//   background-color: #e7e7e7;
-//   border: 3px solid black;
-//   display: inline-block;
-//   font-size: 100px;
-//   height: 200px;
-//   margin: 10px auto;
-//   padding: 16px;
-//   text-align: center;
-//   width: 200px;
-// }
-//
-// .space3 {
-//   background-color: #e7e7e7;
-//   border: 3px solid black;
-//   display: inline-block;
-//   font-size: 100px;
-//   height: 200px;
-//   margin: 10px auto;
-//   padding: 16px;
-//   text-align: center;
-//   width: 200px;
-// }
-//
-// .space4 {
-//   background-color: #e7e7e7;
-//   border: 3px solid black;
-//   display: inline-block;
-//   font-size: 100px;
-//   height: 200px;
-//   margin: 10px auto;
-//   padding: 16px;
-//   text-align: center;
-//   width: 200px;
-// }
-//
-// .space5 {
-//   background-color: #e7e7e7;
-//   border: 3px solid black;
-//   display: inline-block;
-//   font-size: 100px;
-//   height: 200px;
-//   margin: 10px auto;
-//   padding: 16px;
-//   text-align: center;
-//   width: 200px;
-// }
-//
-// .space6 {
-//   background-color: #e7e7e7;
-//   border: 3px solid black;
-//   display: inline-block;
-//   font-size: 100px;
-//   height: 200px;
-//   margin: 10px auto;
-//   padding: 16px;
-//   text-align: center;
-//   width: 200px;
-// }
-//
-// .space7 {
-//   background-color: #e7e7e7;
-//   border: 3px solid black;
-//   display: inline-block;
-//   font-size: 100px;
-//   height: 200px;
-//   margin: 10px auto;
-//   padding: 16px;
-//   text-align: center;
-//   width: 200px;
-// }
-//
-// .space8 {
-//   background-color: #e7e7e7;
-//   border: 3px solid black;
-//   display: inline-block;
-//   font-size: 100px;
-//   height: 200px;
-//   margin: 10px auto;
-//   padding: 16px;
-//   text-align: center;
-//   width: 200px;
-// }

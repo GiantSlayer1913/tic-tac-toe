@@ -10,6 +10,7 @@
       <!-- Do not add `script` tags-->
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+
     </head>
     <body>
       <h1>Welcome to Tic Tac and Toe!</h1>
@@ -56,15 +57,19 @@
       </form>
       <br>
 
+      <div>
 
-      <!-- <div class="players">
-          <button>Player 1</button>
-          <button>Player 2</button>
+      <div class="gameControls">
+          <div class="jumboTron"></div>
       </div>
-      <br> -->
+      <form id="new-game" class="border">
+        <fieldset>
+          <input type="submit" value="New Game">
+        </fieldset>
+      </form>
 
-      <div class="gameBoard">
-        <table>
+
+        <table class="gameBoard">
           <tr>
             <td class="cell" id=0></td>
             <td class="cell" id=1></td>
@@ -81,16 +86,13 @@
             <td class="cell" id=8></td>
           </tr>
         </table>
+
+        <form id="game-history" class="border">
+          <fieldset>
+            <input type="submit" value="Game History">
+          </fieldset>
+        </form>
       </div>
-
-      <div class="endgame">
-        <div class="text"></div>
-        </div>
-            <button onClick="newGame()">New Game</button>
-
-
-
-      <!--<div class="scoreBoard"></div> -->
 
     </body>
 </html>

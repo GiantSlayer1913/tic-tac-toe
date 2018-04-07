@@ -5,6 +5,8 @@
 const api = require('./api')
 const getFormFields = require('../../lib/get-form-fields')
 const ui = require('./ui')
+const gamelogic = require('./gamelogic')
+// Gameboard events
 
 const onSignUp = function (event) {
   event.preventDefault()
@@ -39,35 +41,30 @@ const onSignOut = function () {
     .catch(ui.signOutFailure)
 }
 
-// Gameboard events
-// const onGameBoard = function () {
-//   console.log('inside onGameBoard')
-//   event.preventDefault()
-//   api.gameBoard()
-//     .then(ui.clickBoardSuccess)
-//     .catch(ui.clickBoardFailure)
-// }
+const onNewGame = () => {
+  event.preventDefault()
+  gamelogic.newGame()
+    .then(ui.newGameSuccess)
+    .catch(ui.newGameFailure)
+}
 
-// Double check to see if this acutally works!!!
-// const onNewGame = function (event) {
-//   event.preventDefault()
-//   console.log('Game Finished!')
-//   $('.gameBoard').html('')
-// }
-
+const onGameHistory = (event) => {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  console.log(data)
+  api.gameHistory(data)
+    .then(ui.gameHistorySuccess)
+    .catch(ui.gameHistoryFailure)
+}
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onChangePassword)
   $('#sign-out').on('submit', onSignOut)
+  $('#new-game').on('submit', onNewGame)
+  $('#game-history').on('submit', onGameHistory)
 }
-// Below is addHandlers for gameboard events
-// const addGameHandlers = () => {
-//   console.log('in gameHandlers')
-//   $('.gameboard div').on('click', onGameBoard)
-// }
 
 module.exports = {
   addHandlers
-  // addGameHandlers
 }
