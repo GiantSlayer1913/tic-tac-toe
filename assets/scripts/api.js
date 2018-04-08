@@ -54,12 +54,26 @@ const signOut = function () {
   })
 }
 
+// New Game
+const newGame = (data) => {
+  console.log('New Game is working')
+  return $.ajax({
+    url: config.apiUrl + '/sign-up',
+    method: 'POST',
+    headers: {
+      contentType: 'application/json'
+    },
+    data
+  })
+}
 // Game history
 const gameHistory = (data) => {
   console.log('game-history is working')
   return $.ajax({
-    url: config.apiUrl + '/game-history/' + data.user.id,
-    method: 'GET'
+    url: config.apiUrl + '/game-history/' + store.data.id,
+    method: 'GET',
+    contentType: 'application/json',
+    Authorization: 'Token token=' + store.data
   })
 }
 
@@ -68,5 +82,6 @@ module.exports = {
   signIn,
   changePassword,
   signOut,
-  gameHistory
+  gameHistory,
+  newGame
 }

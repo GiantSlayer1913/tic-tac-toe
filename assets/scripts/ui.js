@@ -52,10 +52,22 @@ const signOutFailure = function () {
 
 // Game History functions
 const gameHistorySuccess = (data) => {
-  $('')
+  $('#jumboTron').text('History Successful')
+  $('#jumboTron').css('background-color', 'green')
 }
 const gameHistoryFailure = (data) => {
-  $('')
+  $('#jumboTron').text('History Failure')
+  $('#jumboTron').css('background-color', 'red')
+}
+
+// New Game functions
+const newGameSuccess = (data) => {
+  $('#jumboTron').text('Begin New Game')
+  $('#jumboTron').css('background-color', 'green')
+}
+const newGameFailure = (data) => {
+  $('#jumboTron').text('Cannot Begin New Game')
+  $('#jumboTron').css('background-color', 'red')
 }
 module.exports = {
   signUpSuccess,
@@ -65,5 +77,9 @@ module.exports = {
   changePasswordSuccess,
   changePasswordFailure,
   signOutSuccess,
-  signOutFailure
+  signOutFailure,
+  gameHistorySuccess,
+  gameHistoryFailure,
+  newGameSuccess,
+  newGameFailure
 }

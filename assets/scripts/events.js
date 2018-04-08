@@ -43,7 +43,7 @@ const onSignOut = function () {
 
 const onNewGame = () => {
   event.preventDefault()
-  gamelogic.newGame()
+  api.newGame()
     .then(ui.newGameSuccess)
     .catch(ui.newGameFailure)
 }

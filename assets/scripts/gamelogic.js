@@ -1,4 +1,4 @@
-let gameBoard = Array.from(Array(9).keys())
+const gameBoard = []
 const player1 = 'X'
 const player2 = 'O'
 
@@ -13,22 +13,20 @@ const winningCombinations = [
   [6, 4, 2]
 ]
 
-const cells = document.querySelectorAll('.cell')
-newGame()
-
 const newGame = () => {
-  document.querySelector(".new-game").style.display = "none"
-  return gameBoard
+//  document.querySelector('.gameBoard').style.display = 'none'
   for (let i = 0; i < cells.length; i++) {
     cells[i].innerText = ''
     cells[i].style.removeProperty('background-color')
     cells[i].addEventListener('click', turnClick, false)
   }
 }
+const cells = document.querySelectorAll('.cell')
+newGame()
 
 const turnClick = (square) => {
   console.log(square.target.id)
-  if (typeof gameBoard[square.target.id] == 'number') {
+  if (typeof gameBoard[square.target.id] === 'number') {
     turn(square.target.id, player1)
     if (!checkTie()) turn(square.target.id, player2)
   }
