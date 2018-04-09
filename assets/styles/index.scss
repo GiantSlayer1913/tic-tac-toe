@@ -60,6 +60,16 @@ tr td:last-child {
   border-top: 0;
 }
 
+tr:first-child td {
+  border-left: 0;
+  border-top: 0;
+}
+
+tr:last-child td {
+  border-bottom: 0;
+  border-right: 0;
+  border-top: 0;
+}
 .gameControls {
   padding: 25px;
   text-align: center;
