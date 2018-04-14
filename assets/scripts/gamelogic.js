@@ -14,7 +14,7 @@ const winningCombinations = [
 ]
 
 const newGame = () => {
-//  document.querySelector('.gameBoard').style.display = 'none'
+  document.querySelector('.cell').style.display = 'none'
   for (let i = 0; i < cells.length; i++) {
     cells[i].innerText = ''
     cells[i].style.removeProperty('background-color')
