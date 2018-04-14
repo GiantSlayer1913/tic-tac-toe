@@ -1,5 +1,6 @@
-const gameBoard
-const currentPlayer = 'X'
+const gameBoard = []
+const player1 = 'X'
+const player2 = 'O'
 
 const winningCombinations = [
   [0, 1, 2],
@@ -12,68 +13,97 @@ const winningCombinations = [
   [6, 4, 2]
 ]
 
-const cells = document.querySelectorAll('.cell')
-
-const startGame = () => {
-  document.querySelector('.endgame').style.display = 'none'
-  gameBoard = Array.from(Array(9).keys())
+const newGame = () => {
+//  document.querySelector('.gameBoard').style.display = 'none'
   for (let i = 0; i < cells.length; i++) {
     cells[i].innerText = ''
     cells[i].style.removeProperty('background-color')
     cells[i].addEventListener('click', turnClick, false)
   }
 }
+const cells = document.querySelectorAll('.cell')
+newGame()
 
-const turn = function (squareId, player) {
-  gameBoard[squareId] = currentPlayer
-  document.getElementById(squareId).innerText = currentPlayer
-  let xWins = checkWin(gameboard, currentPlayer)
-    if (xWins) {
-      gameOver(currentPlayer)
-    } else {
-
-    }
-}
-
-const turnClick = function(square) {
-  turn(square.target.id, currentPlayer)
-}
-
-const playerTurn = (position) => {
-  gameBoard[position] = currentPlayer
-  checkForWinner()
-  if (currentPlayer === 'X') {
-    currentPlayer = 'O'
-  } else {
-    currentPlayer = 'X'
+const turnClick = (square) => {
+  console.log(square.target.id)
+  if (typeof gameBoard[square.target.id] === 'number') {
+    turn(square.target.id, player1)
+    if (!checkTie()) turn(square.target.id, player2)
   }
 }
 
-const checkWin= function(board, currentPlayer) {
-  let plays = board.reduce((a, event, i) =>
-  (event === currentPlayer)) ? a.concat(i) : a, [])
-  let currentPlayer = null
-    for (let [index, win] of winCombos.entries()) {
-      if (win.every(element => plays.indexOf(element) > -1) {
-      gameWon = {index: currentPlayer: currentPlayer}
+const turn = (square, player) => {
+  gameBoard[squareId] = player
+  document.getElementById(squareId).innerText = player
+  let gameWon = checkWin(gameBoard, player)
+  if (gameWon) gameOver(gameWon)
+}
+
+const checkWin = (board, player) => {
+  let plays = board.reduce((a, e, i) =>
+    (e === player) ? a.concat(i) : a, [])
+  let gameWon = null
+  for (let [index, win] of winCombos.entries()) {
+    if (win.every(elem => plays.indexOf(elem) > -1)) {
+      gameWon = {
+        index: index,
+        player: player
+      }
       break
     }
   }
-    return gameWon
+  return gameWon
 }
 
-const gameOver = function (gameWon) {
+const gameOver = (gameWon) => {
   for (let index of winCombos[gameWon.index]) {
     document.getElementById(index).style.backgroundColor =
-    gameWon.player == currentPlayer ? "blue" : "red"
+      gameWon.player == player1 ? "#FBD374" : "#EE3419"
   }
-  for (const i = 0; i < cells.length; i++) {
+  for (let i = 0; i < cells.length; i++) {
     cells[i].removeEventListener('click', turnClick, false)
   }
+  winnerIs(gameWon.player == player1 ? "Player 1 Wins!" : "Player 2 Wins")
+}
+
+const winnerIs = (winner) => {
+  document.querySelector("gameControls").style.display = "block"
+  document.querySelector("gameControls").innerText = winner
+}
+
+const emptySquares = () => {
+  return gameBoard.filter(s => typeof s == 'number')
+}
+
+const clearBoard = () => {
+  return emptySquares()[0]
+}
+
+const checkTie = () => {
+  if (emptySquares().length == 0) {
+    for (let i = 0; i < cells.length; i++) {
+      cells[i].style.backgroundColor = "green"
+      cells[i].removeEventListener('click', turnClick, false)
+    }
+    winnerIs("Tie Game!")
+    return true
+  }
+  return false
 }
 
 module.exports = {
-  startGame,
   gameBoard,
-  playerTurn
+  player1,
+  player2,
+  winningCombinations,
+  cells,
+  newGame,
+  turnClick,
+  turn,
+  checkWin,
+  gameOver,
+  winnerIs,
+  emptySquares,
+  clearBoard,
+  checkTie
 }
