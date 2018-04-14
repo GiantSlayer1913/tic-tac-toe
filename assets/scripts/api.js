@@ -1,6 +1,12 @@
 const config = require('./config')
 const store = require('./store')
 
+// Message timeout function
+// const onSetTimeout = (event) => {
+//   event.preventDefault()
+//   document.getElementById('#message').innerHTML = ''
+// }
+
 // Sign-up
 const signUp = function (data) {
   console.log('sign-up is working')
@@ -53,7 +59,7 @@ const signOut = function () {
     }
   })
 }
-
+// Game Controls -->
 // New Game
 const newGame = (data) => {
   console.log('New Game is working')
@@ -70,10 +76,10 @@ const newGame = (data) => {
 const gameHistory = (data) => {
   console.log('game-history is working')
   return $.ajax({
-    url: config.apiUrl + '/game-history/' + store.data.id,
+    url: config.apiUrl + `/game-history/` + store.data.id,
     method: 'GET',
     contentType: 'application/json',
-    Authorization: 'Token token=' + store.data
+    Authorization: 'Token token=' + store.data.token
   })
 }
 

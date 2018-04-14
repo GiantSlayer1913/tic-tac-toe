@@ -93,6 +93,9 @@ const checkTie = () => {
 
 module.exports = {
   gameBoard,
+  player1,
+  player2,
+  winningCombinations,
   cells,
   newGame,
   turnClick,

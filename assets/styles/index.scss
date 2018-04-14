@@ -21,11 +21,35 @@ h4 {
   padding: 20px;
 }
 
-.gameBoard {
+#sign-up {
+  display: block;
+}
+
+#sign-in {
+  display: block;
+}
+
+#change-password {
+  display: none;
+}
+
+#sign-out {
+  display: none;
+}
+
+#new-game {
+  display: none;
+}
+
+#game-history {
+  display: none;
+}
+
+#gameBoard {
   background-color: #e7e7e7;
   border: 3px solid black;
   border-collapse: collapse;
-  display: inline-block;
+  display: none;
   font-size: 100px;
   height: 500px;
   margin: 10px auto;
