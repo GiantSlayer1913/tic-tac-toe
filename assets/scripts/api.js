@@ -59,12 +59,13 @@ const signOut = function () {
     }
   })
 }
+
 // Game Controls -->
 // New Game
 const newGame = (data) => {
   console.log('New Game is working')
   return $.ajax({
-    url: config.apiUrl + '/sign-up',
+    url: config.apiUrl + '/new-game',
     method: 'POST',
     headers: {
       contentType: 'application/json'
@@ -76,10 +77,10 @@ const newGame = (data) => {
 const gameHistory = (data) => {
   console.log('game-history is working')
   return $.ajax({
-    url: config.apiUrl + `/game-history/` + store.data.id,
+    url: config.apiUrl + `/game-history/`,
     method: 'GET',
     contentType: 'application/json',
-    Authorization: 'Token token=' + store.data.token
+    Authorization: 'Token token=' + store.data
   })
 }
 
