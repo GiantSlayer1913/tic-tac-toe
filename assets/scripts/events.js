@@ -5,6 +5,11 @@
 const api = require('./api')
 const getFormFields = require('../../lib/get-form-fields')
 const ui = require('./ui')
+<<<<<<< HEAD
+=======
+// const gamelogic = require('./gamelogic')
+
+>>>>>>> Head: committing changes before deploy
 
 const onSignUp = function (event) {
   event.preventDefault()
@@ -55,6 +60,7 @@ const onGameHistory = (event) => {
     .then(ui.gameHistorySuccess)
     .catch(ui.gameHistoryFailure)
 }
+
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
