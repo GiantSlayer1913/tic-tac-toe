@@ -9,7 +9,7 @@ const store = require('./store')
 
 // Sign-up
 const signUp = function (data) {
-  console.log('sign-up is working')
+  console.log('api.sign-up is working')
   return $.ajax({
     url: config.apiUrl + `/sign-up`,
     method: 'POST',
@@ -22,7 +22,7 @@ const signUp = function (data) {
 
 // Sign-in
 const signIn = function (data) {
-  console.log('sign-in is working')
+  console.log('api.sign-in is working')
   return $.ajax({
     url: config.apiUrl + `/sign-in`,
     method: 'POST',
@@ -35,7 +35,7 @@ const signIn = function (data) {
 
 // Change Password
 const changePassword = function (data) {
-  console.log('change-Password is working')
+  console.log('api.change-Password is working')
   return $.ajax({
     url: config.apiUrl + `/change-password/` + store.user.id,
     method: 'PATCH',
@@ -49,7 +49,7 @@ const changePassword = function (data) {
 
 // Sign-out
 const signOut = function () {
-  console.log('sign-out is working')
+  console.log('api.sign-out is working')
   return $.ajax({
     url: config.apiUrl + `/sign-out/` + store.user.id,
     method: 'DELETE',
@@ -62,9 +62,9 @@ const signOut = function () {
 // Game Controls -->
 // New Game
 const newGame = (data) => {
-  console.log('New Game is working')
+  console.log('api.New Game is working')
   return $.ajax({
-    url: config.apiUrl + '/sign-up',
+    url: config.apiUrl + '/gamelogic',
     method: 'POST',
     headers: {
       contentType: 'application/json'
@@ -74,12 +74,12 @@ const newGame = (data) => {
 }
 // Game history
 const gameHistory = (data) => {
-  console.log('game-history is working')
+  console.log('api.game-history is working')
   return $.ajax({
-    url: config.apiUrl + `/game-history/` + store.data.id,
+    url: config.apiUrl + `/game-history/`,
     method: 'GET',
     contentType: 'application/json',
-    Authorization: 'Token token=' + store.data.token
+    Authorization: 'Token token=' + store.data
   })
 }
 

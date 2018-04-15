@@ -57,6 +57,7 @@ const onGameHistory = (event) => {
     .then(ui.gameHistorySuccess)
     .catch(ui.gameHistoryFailure)
 }
+
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
