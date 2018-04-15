@@ -53,6 +53,7 @@ const changePasswordFailure = function () {
 // Sign-out functions
 const signOutSuccess = function (data) {
   console.log(data)
+  store.user = null
   $('#sign-up').css('display', 'block')
   $('#sign-in').css('display', 'block')
   $('#change-password').css('display', 'none')
@@ -63,8 +64,10 @@ const signOutSuccess = function (data) {
   $('#message').css('display', 'block')
   $('#message').text('Successfully signed out')
   $('#message').css('background-color', 'green')
-  store.user = null
+  $('#sign-in')[0].reset()
+  $('#sign-up')[0].reset()
 }
+
 const signOutFailure = function () {
   $('#message').css('display', 'block')
   $('#message').text('Failure to sign out')
@@ -73,6 +76,8 @@ const signOutFailure = function () {
 
 // Game History functions
 const gameHistorySuccess = (data) => {
+  store.user = data.user
+  console.log(data)
   $('#jumboTron').css('display', 'block')
   $('#jumboTron').text('History Successful')
   $('#jumboTron').css('background-color', 'green')
@@ -84,7 +89,8 @@ const gameHistoryFailure = (data) => {
 }
 
 // New Game functions
-const newGameSuccess = (data) => {
+const newGameSuccess = () => {
+  $('#gameBoard').html('innerText', '')
   $('#message').css('display', 'block')
   $('#message').text('Begin New Game')
   $('#message').css('background-color', 'green')
@@ -94,6 +100,8 @@ const newGameFailure = (data) => {
   $('#message').text('Cannot Begin New Game')
   $('#message').css('background-color', 'red')
 }
+
+
 module.exports = {
   signUpSuccess,
   signUpFailure,

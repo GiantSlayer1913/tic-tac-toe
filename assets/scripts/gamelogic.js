@@ -12,68 +12,85 @@ const winningCombinations = [
   [6, 4, 2]
 ]
 
-const cells = document.querySelectorAll('.cell')
-
-const startGame = () => {
-  document.querySelector('.endgame').style.display = 'none'
-  gameBoard = Array.from(Array(9).keys())
-  for (let i = 0; i < cells.length; i++) {
-    cells[i].innerText = ''
-    cells[i].style.removeProperty('background-color')
-    cells[i].addEventListener('submit', turnClick, false)
-  }
-}
-
-const turn = function (squareId, player) {
-  gameBoard[squareId] = currentPlayer
-  document.getElementById(squareId).innerText = currentPlayer
-  let xWins = checkWin(gameboard, currentPlayer)
-    if (xWins) {
-      gameOver(currentPlayer)
-    } else {
-
-    }
-}
-
-const turnClick = function(square) {
-  turn(square.target.id, currentPlayer)
-}
-
-const playerTurn = (position) => {
-  gameBoard[position] = currentPlayer
-  checkForWinner()
-  if (currentPlayer === 'X') {
-    currentPlayer = 'O'
-  } else {
-    currentPlayer = 'X'
-  }
-}
-
-const checkWin= function(board, currentPlayer) {
-  let plays = board.reduce((a, event, i) =>
-  (event === currentPlayer)) ? a.concat(i) : a, [])
-  let currentPlayer = null
-    for (let [index, win] of winCombos.entries()) {
-      if (win.every(element => plays.indexOf(element) > -1) {
-      gameWon = {index: currentPlayer: currentPlayer}
-      break
-    }
-  }
-    return gameWon
-}
-
-const gameOver = function (gameWon) {
-  for (let index of winCombos[gameWon.index]) {
-    document.getElementById(index).style.backgroundColor =
-    gameWon.player == currentPlayer ? "blue" : "red"
-  }
-  for (const i = 0; i < cells.length; i++) {
-    cells[i].removeEventListener('click', turnClick, false)
-  }
-}
+// const newGame = () => {
+//   document.querySelector('.cell').innerText = ''
+//   for (let i = 0; i < cells.length; i++) {
+//     cells[i].style.removeProperty('background-color')
+//     cells[i].addEventListener('submit', turnClick, false)
+//   }
+// }
+// const cells = document.querySelectorAll('.cell')
+// newGame()
 
 module.exports = {
   startGame,
   gameBoard,
   playerTurn
 }
+
+// const turnClick = (square) => {
+//   console.log(square.target.id)
+//   if (typeof gameBoard[square.target.id] === 'number') {
+//     turn(square.target.id, player1)
+//     if (!checkTie()) turn(square.target.id, player2)
+//   }
+// }
+//
+// const turn = (square, player) => {
+//   gameBoard[square] = player
+//   document.getElementById('.cell').innerText = player
+//   let gameWon = checkWin(gameBoard, player)
+//   if (gameWon) gameOver(gameWon)
+// }
+//
+// const checkWin = (board, player) => {
+//   let plays = board.reduce((a, e, i) =>
+//     (e === player) ? a.concat(i) : a, [])
+//   let gameWon = null
+//   for (let [index, win] of winCombos.entries()) {
+//     if (win.every(elem => plays.indexOf(elem) > -1)) {
+//       gameWon = {
+//         index: index,
+//         player: player
+//       }
+//       break
+//     }
+//   }
+//   return gameWon
+// }
+//
+// const gameOver = (gameWon) => {
+//   for (let index of winCombos[gameWon.index]) {
+//     document.getElementById(index).style.backgroundColor =
+//       gameWon.player == player1 ? '#FBD374' : '#EE3419'
+//   }
+//   for (let i = 0; i < cells.length; i++) {
+//     cells[i].removeEventListener('click', turnClick, false)
+//   }
+//   winnerIs(gameWon.player == player1 ? "Player 1 Wins!" : "Player 2 Wins")
+// }
+//
+// const winnerIs = (winner) => {
+//   document.querySelector("gameControls").style.display = "block"
+//   document.querySelector("gameControls").innerText = winner
+// }
+//
+// const emptySquares = () => {
+//   return gameBoard.filter(s => typeof s == 'number')
+// }
+//
+// const clearBoard = () => {
+//   return emptySquares()[0]
+// }
+//
+// const checkTie = () => {
+//   if (emptySquares().length == 0) {
+//     for (let i = 0; i < cells.length; i++) {
+//       cells[i].style.backgroundColor = "green"
+//       cells[i].removeEventListener('click', turnClick, false)
+//     }
+//     winnerIs("Tie Game!")
+//     return true
+//   }
+//   return false
+// }
