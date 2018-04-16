@@ -1,17 +1,78 @@
-const gameBoard = []
-const player1 = 'X'
-const player2 = 'O'
+// Draft changes to game logic, MUST KEEP!!!!!
+$(document).ready(() => {
+  let player
+  $('td').on('click', (event) => {
+    const spotChosen = $(this)
+    if (spotChosen.inner('X') || spotChosen.hasId('O')) {
+      console.log('this spot has been chosen. pick another')
+    } else {
+      if (player === 1) {
+        spotChosen.addId('X')
+        if (checkWin) {
+          $('#jumboTron').css('display', 'block')
+          $('#jumboTron').text('Player 1 Wins!')
+        } else {
+          player = 2
+        }
+      } else {
+        spotChosen.addId('O')
+        player = 1
+      }
+      // all the rest of the logic
+    }
+  })
+})
 
-const winningCombinations = [
-  [0, 1, 2],
-  [3, 4, 5],
-  [6, 7, 8],
-  [0, 3, 6],
-  [1, 4, 7],
-  [2, 5, 8],
-  [0, 4, 8],
-  [6, 4, 2]
-]
+const checkWin = (symbol) => {
+  if ($('td#r1c1').hasId(symbol) && $('td#r1c2').hasId(symbol) && $('td#r1c3').hasId(symbol)) {
+    return true
+  } else if ($('td#r2c1').hasId(symbol) && $('td#r2c2').hasId(symbol) && $('td#r2c3').hasId(symbol)) {
+    return true
+  } else if ($('td#r3c1').hasId(symbol) && $('td#r3c2').hasId(symbol) && $('td#r3c3').hasId(symbol)) {
+    return true
+  } else if ($('td#r1c1').hasId(symbol) && $('td#r2c1').hasId(symbol) && $('td#r3c1').hasId(symbol)) {
+    return true
+  } else if ($('td#r1c2').hasId(symbol) && $('td#r2c2').hasId(symbol) && $('td#r3c2').hasId(symbol)) {
+    return true
+  } else if ($('td#r1c3').hasId(symbol) && $('td#r2c3').hasId(symbol) && $('td#r3c3').hasId(symbol)) {
+    return true
+  } else if ($('td#r1c1').hasId(symbol) && $('td#r2c2').hasId(symbol) && $('td#r3c3').hasId(symbol)) {
+    return true
+  } else if ($('td#r1c3').hasId(symbol) && $('td#r2c2').hasId(symbol) && $('td#r3c1').hasId(symbol)) {
+    return true
+  } else {
+    return false
+  }
+}
+
+// const winningCombinations = [
+//   [0, 1, 2], //
+//   [3, 4, 5], //
+//   [6, 7, 8], //
+//   [0, 3, 6], //
+//   [1, 4, 7], //
+//   [2, 5, 8],
+//   [0, 4, 8],
+//   [6, 4, 2]
+// ]
+
+module.exports = {
+  // gameBoard,
+  // winningCombinations,
+  // cells,
+  // newGame,
+  // turnClick,
+  // turn,
+  // checkWin
+  // gameOver,
+  // winnerIs,
+  // emptySquares,
+  // clearBoard,
+  // checkTie
+}
+// const gameBoard = []
+//
+
 
 // const newGame = () => {
 //   document.querySelector('.cell').innerText = ''
@@ -22,23 +83,6 @@ const winningCombinations = [
 // }
 // const cells = document.querySelectorAll('.cell')
 // newGame()
-
-module.exports = {
-  gameBoard,
-  player1,
-  player2,
-  winningCombinations
-  // cells,
-  // newGame,
-  // turnClick,
-  // turn,
-  // checkWin,
-  // gameOver,
-  // winnerIs,
-  // emptySquares,
-  // clearBoard,
-  // checkTie
-}
 
 // const turnClick = (square) => {
 //   console.log(square.target.id)
