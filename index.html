@@ -1,94 +1,98 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <title>Tic Tac Toe</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <!-- Do not add `link` tags-->
-      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<head>
+  <title>Tic Tac Toe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <!-- Do not add `script` tags-->
-      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
-      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+  <!-- Do not add `link` tags-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
-    </head>
-    <body>
-      <h1>Welcome to Tic Tac and Toe!</h1>
-      <h4>Copyright © 2018 Tic Tac Toe Accounting LLC</h4>
+  <!-- Do not add `script` tags-->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
 
-<div id="message"></div>
-      <form id="sign-up" class="border">
-        <fieldset>
-          <legend>Sign up!</legend>
-          <input type="email" name="credentials[email]" placeholder="Email">
-          <input type="password" name="credentials[password]" placeholder="Password">
-          <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
-          <input type="submit" value="Sign up!">
-        </fieldset>
-      </form>
-      <br>
+</head>
 
-      <form id="sign-in" class="border">
-        <fieldset>
-          <legend>Sign in!</legend>
-          <input type="text" name="credentials[email]" placeholder="Email">
-          <input type="password" name="credentials[password]" placeholder="Password">
-          <input type="submit" value="Sign in!">
-        </fieldset>
-      </form>
-      <br>
+<body>
+  <h1>Welcome to Tic Tac and Toe!</h1>
+  <h4>Copyright © 2018 Tic Tac Toe Accounting LLC</h4>
 
-      <form id="change-password" class="border">
-              <fieldset>
-                <legend>Change Password!</legend>
-                <input type="password" name="passwords[old]" placeholder="Old Password">
-                <input type="password" name="passwords[new]" placeholder="New Password">
-                <input type="submit" value="Change Password!">
-              </fieldset>
-            </form>
-            <br>
+  <div id="message"></div>
+  <form id="sign-up" class="border">
+    <fieldset>
+      <legend>Sign up!</legend>
+      <input type="email" name="credentials[email]" placeholder="Email">
+      <input type="password" name="credentials[password]" placeholder="Password">
+      <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+      <input type="submit" value="Sign up!">
+    </fieldset>
+  </form>
+  <br>
 
-      <form id="sign-out" class="border">
-        <fieldset>
-          <legend>Sign Out!</legend>
-          <input type="submit" value="Sign Out!">
-        </fieldset>
-      </form>
-      <br>
+  <form id="sign-in" class="border">
+    <fieldset>
+      <legend>Sign in!</legend>
+      <input type="text" name="credentials[email]" placeholder="Email">
+      <input type="password" name="credentials[password]" placeholder="Password">
+      <input type="submit" value="Sign in!">
+    </fieldset>
+  </form>
+  <br>
 
-      <div class="gameControls">
-          <div type="text" class="jumboTron"></div>
-      </div>
-      <form id="new-game" class="border">
-        <fieldset>
-          <input type="submit" value="New Game">
-        </fieldset>
-      </form>
+  <form id="change-password" class="border">
+    <fieldset>
+      <legend>Change Password!</legend>
+      <input type="password" name="passwords[old]" placeholder="Old Password">
+      <input type="password" name="passwords[new]" placeholder="New Password">
+      <input type="submit" value="Change Password!">
+    </fieldset>
+  </form>
+  <br>
+
+  <form id="sign-out" class="border">
+    <fieldset>
+      <legend>Sign Out!</legend>
+      <input type="submit" value="Sign Out!">
+    </fieldset>
+  </form>
+  <br>
+
+  <!-- <div class="gameControls"> -->
+  <div class="jumboTron" type="text">
+  </div>
+    <!-- </div> -->
+    <form id="new-game" class="border">
+      <fieldset>
+        <input type="submit" value="New Game">
+      </fieldset>
+    </form>
 
 
-        <table id='gameBoard'>
-          <tr>
-            <td id='r1c1'>X</td>
-            <td id='r1c2'>X</td>
-            <td id='r1c3'>O</td>
-          </tr>
-          <tr>
-            <td id='r2c1'>X</td>
-            <td id='r2c2'>O</td>
-            <td id='r2c3'>O</td>
-          </tr>
-          <tr>
-            <td id='r3c1'>O</td>
-            <td id='r3c2'>X</td>
-            <td id='r3c3'></td>
-          </tr>
-        </table>
+    <table id='gameBoard'>
+      <tr>
+        <td id='r1c1'></td>
+        <td id='r1c2'></td>
+        <td id='r1c3'></td>
+      </tr>
+      <tr>
+        <td id='r2c1'></td>
+        <td id='r2c2'></td>
+        <td id='r2c3'></td>
+      </tr>
+      <tr>
+        <td id='r3c1'></td>
+        <td id='r3c2'></td>
+        <td id='r3c3'></td>
+      </tr>
+    </table>
 
-        <form id="game-history" class="border">
-          <fieldset>
-            <input type="submit" value="Game History">
-          </fieldset>
-        </form>
+    <form id="game-history" class="border">
+      <fieldset>
+        <input type="submit" value="Game History">
+      </fieldset>
+    </form>
 
-    </body>
+</body>
+
 </html>
