@@ -67,7 +67,7 @@ const signOutSuccess = function (data) {
   $('#message').css('display', 'block')
   $('#message').text('Successfully signed out')
   $('#message').css('background-color', 'green')
-  $('#sign-in')[0].reset()
+  $('#sign-in')[0].children('input').val('')
   $('#sign-up')[0].reset()
 }
 
