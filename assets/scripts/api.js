@@ -65,11 +65,7 @@ const signOut = function () {
 const newGame = (data) => {
   console.log('api.New Game is working')
   return $.ajax({
-<<<<<<< HEAD
     url: config.apiUrl + '/new-game',
-=======
-    url: config.apiUrl + '/gamelogic',
->>>>>>> draft
     method: 'POST',
     headers: {
       contentType: 'application/json'
