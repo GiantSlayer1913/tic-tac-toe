@@ -83,6 +83,8 @@ const gameHistory = (data) => {
   })
 }
 
+// Gameboard api
+
 module.exports = {
   signUp,
   signIn,

@@ -1,12 +1,9 @@
 // Draft changes to game logic, MUST KEEP!!!!!
 let gameBoard = ['', '', '', '', '', '', '', '', '']
 console.log(gameBoard)
-const currentPlayer = 'X'
+let currentPlayer = 'X'
 
-const playSQ1 = () => {
-  document.getElementById('#r1c1').innerHTML = 'X'
 
-}
 
 const checkWin = (symbol) => {
   if ($('td#r1c1').hasId(symbol) && $('td#r1c2').hasId(symbol) && $('td#r1c3').hasId(symbol)) {

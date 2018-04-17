@@ -29,6 +29,7 @@ const signInSuccess = function (data) {
   $('#gameBoard').css('display', 'inline-block')
   $('#new-game').css('display', 'block')
   $('#game-history').css('display', 'block')
+  $('#change-password')[0].reset()
 }
 const signInFailure = function () {
   $('#message').css('display', 'block')
@@ -42,12 +43,14 @@ const changePasswordSuccess = function () {
   $('#message').css('display', 'block')
   $('#message').text('Successfully changed password')
   $('#message').css('background-color', 'green')
+  $('#change-password')[0].reset()
 }
 const changePasswordFailure = function () {
   console.log('ui-changePasswordFailure working')
   $('#message').css('display', 'block')
   $('#message').text('Failure to change password')
   $('#message').css('background-color', 'red')
+  $('#change-password')[0].reset()
 }
 
 // Sign-out functions
@@ -90,7 +93,7 @@ const gameHistoryFailure = (data) => {
 
 // New Game functions
 const newGameSuccess = () => {
-  $('#gameBoard').html('innerText', '')
+  $('#gameBoard').innerHTMLhtml('X')
   $('#message').css('display', 'block')
   $('#message').text('Begin New Game')
   $('#message').css('background-color', 'green')
@@ -101,7 +104,10 @@ const newGameFailure = (data) => {
   $('#message').css('background-color', 'red')
 }
 
-
+// Gameboard click functions
+const playX = () => {
+  document.getElementById('#gameBoard').innerHTML = 'X'
+}
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -114,5 +120,6 @@ module.exports = {
   gameHistorySuccess,
   gameHistoryFailure,
   newGameSuccess,
-  newGameFailure
+  newGameFailure,
+  playX
 }
