@@ -5,11 +5,7 @@
 const api = require('./api')
 const getFormFields = require('../../lib/get-form-fields')
 const ui = require('./ui')
-<<<<<<< HEAD
-=======
-// const gamelogic = require('./gamelogic')
 
->>>>>>> Head: committing changes before deploy
 
 const onSignUp = function (event) {
   event.preventDefault()
