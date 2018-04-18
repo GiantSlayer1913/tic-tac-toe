@@ -6,7 +6,6 @@ const api = require('./api')
 const getFormFields = require('../../lib/get-form-fields')
 const ui = require('./ui')
 
-
 const onSignUp = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
@@ -42,7 +41,7 @@ const onSignOut = function () {
 
 const onNewGame = () => {
   event.preventDefault()
-  console.log('new-game working')
+  console.log('events new-game working')
   api.newGame()
     .then(ui.newGameSuccess)
     .catch(ui.newGameFailure)
@@ -51,7 +50,7 @@ const onNewGame = () => {
 const onGameHistory = (event) => {
   event.preventDefault()
   const data = getFormFields(event.target)
-  console.log('game-history working')
+  console.log('events game-history working')
   api.gameHistory(data)
     .then(ui.gameHistorySuccess)
     .catch(ui.gameHistoryFailure)

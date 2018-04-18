@@ -92,8 +92,9 @@ const gameHistoryFailure = (data) => {
 }
 
 // New Game functions
-const newGameSuccess = () => {
-  $('#gameBoard').innerHTMLhtml('X')
+const newGameSuccess = (data) => {
+  store.user = data.user
+  $('#message').text('X')
   $('#message').css('display', 'block')
   $('#message').text('Begin New Game')
   $('#message').css('background-color', 'green')

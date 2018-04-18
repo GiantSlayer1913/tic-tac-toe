@@ -1,43 +1,53 @@
 // Draft changes to game logic, MUST KEEP!!!!!
 let gameBoard = ['', '', '', '', '', '', '', '', '']
 console.log(gameBoard)
-let currentPlayer = 'X'
+const player1 = 'X'
+const player2 = 'O'
+let playerSwitch = ''
 
-
-
-const checkWin = (symbol) => {
-  if ($('td#r1c1').hasId(symbol) && $('td#r1c2').hasId(symbol) && $('td#r1c3').hasId(symbol)) {
-    return true
-  } else if ($('td#r2c1').hasId(symbol) && $('td#r2c2').hasId(symbol) && $('td#r2c3').hasId(symbol)) {
-    return true
-  } else if ($('td#r3c1').hasId(symbol) && $('td#r3c2').hasId(symbol) && $('td#r3c3').hasId(symbol)) {
-    return true
-  } else if ($('td#r1c1').hasId(symbol) && $('td#r2c1').hasId(symbol) && $('td#r3c1').hasId(symbol)) {
-    return true
-  } else if ($('td#r1c2').hasId(symbol) && $('td#r2c2').hasId(symbol) && $('td#r3c2').hasId(symbol)) {
-    return true
-  } else if ($('td#r1c3').hasId(symbol) && $('td#r2c3').hasId(symbol) && $('td#r3c3').hasId(symbol)) {
-    return true
-  } else if ($('td#r1c1').hasId(symbol) && $('td#r2c2').hasId(symbol) && $('td#r3c3').hasId(symbol)) {
-    return true
-  } else if ($('td#r1c3').hasId(symbol) && $('td#r2c2').hasId(symbol) && $('td#r3c1').hasId(symbol)) {
-    return true
+// Change turn function will change player turn, add either an 'X' or an 'O'
+// to a space on click, and check to see if a space has been taken
+const playerturn = () => {
+  if (this.innerHTML !== 'X' && this.innerHTML !== 'O') {
+    if (playerSwitch === player1) {
+      playerSwitch = player2
+    } else {
+      playerSwitch = player1
+    }
+    this.innerHTML = playerSwitch
+    console.log(playerSwitch)
   } else {
-    return false
+    console.log('this square is not available at the moment')
+    $('#player-message').text('Can\'t Play Here! Try another spot.')
   }
+  return playerSwitch
 }
 
-// const winningCombinations = [
-//   [0, 1, 2], //
-//   [3, 4, 5], //
-//   [6, 7, 8], //
-//   [0, 3, 6], //
-//   [1, 4, 7], //
-//   [2, 5, 8],
-//   [0, 4, 8],
-//   [6, 4, 2]
-// ]
+const announcePlayerTurn = () => {
+  if (playerSwitch === 'O') {
+    $('#player-message').text('Player X it is your turn')
+  } else if (playerSwitch === 'X') {
+    $('#player-message').text('Player O it is your turn')
+  }
+  return playerSwitch
+}
+announcePlayerTurn()
+
+// Push player token, either 'X' or 'O' to the board array
+const newArray = (data) => {
+  gameBoard[0] = $('#0').text(api.gameUpdate)
+  gameBoard[1] = $('#1').text(api.gameUpdate)
+  gameBoard[2] = $('#2').text(api.gameUpdate)
+  gameBoard[3] = $('#3').text(api.gameUpdate)
+  gameBoard[4] = $('#4').text(api.gameUpdate)
+  gameBoard[5] = $('#5').text(api.gameUpdate)
+  gameBoard[6] = $('#6').text(api.gameUpdate)
+  gameBoard[7] = $('#7').text(api.gameUpdate)
+  gameBoard[8] = $('#8').text(api.gameUpdate)
+}
+
+
 
 module.exports = {
-  playX
+
 }
