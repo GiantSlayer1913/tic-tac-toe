@@ -29,7 +29,7 @@ const signInSuccess = function (data) {
   $('#gameBoard').css('display', 'inline-block')
   $('#new-game').css('display', 'block')
   $('#game-history').css('display', 'block')
-  $('#change-password').reset()
+  $('#change-password')[0].reset()
 }
 const signInFailure = function () {
   $('#message').css('display', 'block')
@@ -43,14 +43,14 @@ const changePasswordSuccess = function () {
   $('#message').css('display', 'block')
   $('#message').text('Successfully changed password')
   $('#message').css('background-color', 'green')
-  $('#change-password').reset()
+  $('#change-password')[0].reset()
 }
 const changePasswordFailure = function () {
   console.log('ui-changePasswordFailure working')
   $('#message').css('display', 'block')
   $('#message').text('Failure to change password')
   $('#message').css('background-color', 'red')
-  $('#change-password').reset()
+  $('#change-password')[0].reset()
 }
 
 // Sign-out functions
@@ -67,8 +67,8 @@ const signOutSuccess = function (data) {
   $('#message').css('display', 'block')
   $('#message').text('Successfully signed out')
   $('#message').css('background-color', 'green')
-  $('#sign-in').reset()
-  $('#sign-up').reset()
+  $('#sign-in')[0].reset()
+  $('#sign-up')[0].reset()
 }
 
 const signOutFailure = function () {
