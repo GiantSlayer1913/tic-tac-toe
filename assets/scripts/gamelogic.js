@@ -1,7 +1,8 @@
 const api = require('./api')
 const store = require('./store')
+// const ui = require('./ui')
 // const data = require('./api')
-// Draft changes to game logic, MUST KEEP!!!!!
+
 let gameBoard = ['', '', '', '', '', '', '', '', '']
 console.log(gameBoard)
 let currentPlayer = 'X'
@@ -19,20 +20,20 @@ const playerTurn = () => {
     console.log(currentPlayer)
   } else {
     console.log('this square is not available at the moment')
-    $('#message').text('Can\'t Play Here! Try another spot.')
+    $('#jumboTron').text('Can\'t Play Here! Try another spot.')
   }
   return currentPlayer
 }
 
-const playerShoutOut = () => {
-  if (currentPlayer === 'O') {
-    $('#message').text('Player X it is your turn')
-  } else if (currentPlayer === 'X') {
-    $('#jumboTron').text('Player O it is your turn')
-  }
-  return currentPlayer
-}
-playerShoutOut()
+// const playerShoutOut = () => {
+//   if (currentPlayer === 'X') {
+//     $('#jumboTron').text('Player X it is your turn')
+//   } else if (currentPlayer === 'X') {
+//     $('#jumboTron').text('Player O it is your turn')
+//   }
+//   return currentPlayer
+// }
+// playerShoutOut()
 
 // Push player token, either 'X' or 'O' to the board array
 const boardMoves = (data) => {
@@ -69,11 +70,8 @@ const checkWin = () => {
       (gameBoard[1].innerHTML === 'X' && gameBoard[4].innerHTML === 'X' && gameBoard[7].innerHTML === 'X') ||
       (gameBoard[2].innerHTML === 'X' && gameBoard[4].innerHTML === 'X' && gameBoard[6].innerHTML === 'X')) {
     console.log('X wins')
-    $('#message').text('X wins')
-    $('#message').css('background-color', 'green')
-    $('#gameBoard').hide()
-    $('#message').hide()
-    $('#jumboTron').show()
+    $('#jumboTron').text('X wins')
+    $('#jumboTron').css('background-color', 'green')
     gameEnd = true
     return true
   } else if ((gameBoard[0] === 'O' && gameBoard[1] === 'O' && gameBoard[2] === 'O') ||
@@ -85,11 +83,8 @@ const checkWin = () => {
              (gameBoard[1].innerHTML === 'O' && gameBoard[4].innerHTML === 'O' && gameBoard[7].innerHTML === 'O') ||
              (gameBoard[2].innerHTML === 'O' && gameBoard[4].innerHTML === 'O' && gameBoard[6].innerHTML === 'O')) {
     console.log('O wins')
-    $('#message').text('O wins')
-    $('#message').css('background-color', 'purple')
-    $('#game-board').hide()
-    $('#player-message').hide()
-    $('#outcome-message').show()
+    $('#jumboTron').text('O wins')
+    $('#jumboTron').css('background-color', 'purple')
     gameEnd = true
     return true
   } else if ((gameBoard[0].innerHTML !== '' && gameBoard[1].innerHTML !== '' &&
@@ -99,11 +94,8 @@ const checkWin = () => {
               gameBoard[8].innerHTML !== '')) {
     // return draw
     console.log('Its a draw')
-    $('#message').text('Its a draw')
-    $('#message').css('background-color', 'purple')
-    $('#gameBoard').hide()
-    $('#player-message').hide()
-    $('#outcome-message').show()
+    $('#jumboTron').text('Its a draw')
+    $('#jumboTron').css('background-color', 'purple')
     gameEnd = true
     return true
   }
@@ -113,13 +105,9 @@ const checkWin = () => {
 const newGame = function (event) {
   event.preventDefault()
   gameBoard = ['', '', '', '', '', '', '', '', '']
-  currentPlayer = 'O'
+  let currentPlayer = 'X'
   $('#gameBoard').show()
-  $('.box').html('')
-  $('#message').show()
-  $('#jumboTron').hide()
-  $('#board-hide').removeClass()
-  store.gamelogic = data.gamelogic
+  $('#jumboTron').show()
 }
 
 module.exports = {

@@ -5,7 +5,7 @@
 const api = require('./api')
 const getFormFields = require('../../lib/get-form-fields')
 const ui = require('./ui')
-// const gamelogic = require('./gamelogic')
+const gamelogic = require('./gamelogic')
 
 const onSignUp = function (event) {
   event.preventDefault()
@@ -40,10 +40,9 @@ const onSignOut = function () {
     .catch(ui.signOutFailure)
 }
 
-const onNewGame = () => {
+const onNewGame = (event) => {
   event.preventDefault()
-  console.log('events new-game working')
-  gamelogic.newGame()
+  api.newGame()
     .then(ui.newGameSuccess)
     .catch(ui.newGameFailure)
 }

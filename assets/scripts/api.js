@@ -68,7 +68,8 @@ const newGame = (data) => {
     url: config.apiUrl + '/new-game',
     method: 'POST',
     headers: {
-      contentType: 'application/json'
+      contentType: 'application/json',
+      Authorization: `Token token=${store.user.token}`
     },
     data
   })
