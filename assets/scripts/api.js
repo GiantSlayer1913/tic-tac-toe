@@ -84,6 +84,16 @@ const gameHistory = (data) => {
   })
 }
 
+const gameStatus = (data) => {
+  console.log('api.game-status is working')
+  return $.ajax({
+    url: config.apiUrl + `/game-status`,
+    method: 'POST',
+    contentType: 'application/json',
+    data
+  })
+}
+
 // Gameboard api
 
 module.exports = {
@@ -92,5 +102,6 @@ module.exports = {
   changePassword,
   signOut,
   gameHistory,
-  newGame
+  newGame,
+  gameStatus
 }

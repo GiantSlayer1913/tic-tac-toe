@@ -5,6 +5,7 @@
 const api = require('./api')
 const getFormFields = require('../../lib/get-form-fields')
 const ui = require('./ui')
+// const gamelogic = require('./gamelogic')
 
 const onSignUp = function (event) {
   event.preventDefault()
@@ -42,7 +43,7 @@ const onSignOut = function () {
 const onNewGame = () => {
   event.preventDefault()
   console.log('events new-game working')
-  api.newGame()
+  gamelogic.newGame()
     .then(ui.newGameSuccess)
     .catch(ui.newGameFailure)
 }
@@ -56,6 +57,15 @@ const onGameHistory = (event) => {
     .catch(ui.gameHistoryFailure)
 }
 
+const onGameStatus = (event) => {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  console.log('events game-status is working')
+  api.gameStatus(data)
+    .then(ui.gameStatusSuccess)
+    .catch(ui.gameStatusFailure)
+}
+
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
@@ -63,6 +73,7 @@ const addHandlers = () => {
   $('#sign-out').on('submit', onSignOut)
   $('#new-game').on('submit', onNewGame)
   $('#game-history').on('submit', onGameHistory)
+  $('game-status').on('submit', onGameStatus)
 }
 
 module.exports = {
