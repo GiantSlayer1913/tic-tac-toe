@@ -51,7 +51,7 @@ const onGameHistory = (event) => {
   event.preventDefault()
   const data = getFormFields(event.target)
   console.log('events game-history working')
-  api.gameHistory(data)
+  api.gameHistory()
     .then(ui.gameHistorySuccess)
     .catch(ui.gameHistoryFailure)
 }
