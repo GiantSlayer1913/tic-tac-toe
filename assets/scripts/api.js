@@ -65,7 +65,7 @@ const signOut = function () {
 const newGame = (data) => {
   console.log('api.New Game is working')
   return $.ajax({
-    url: config.apiUrl + '/new-game',
+    url: config.apiUrl + '/games',
     method: 'POST',
     headers: {
       contentType: 'application/json',
@@ -78,7 +78,7 @@ const newGame = (data) => {
 const gameHistory = (data) => {
   console.log('api.game-history is working')
   return $.ajax({
-    url: config.apiUrl + `/game-history/`,
+    url: config.apiUrl + `/games`,
     method: 'GET',
     contentType: 'application/json',
     Authorization: 'Token token=' + store.data
@@ -88,9 +88,10 @@ const gameHistory = (data) => {
 const gameStatus = (data) => {
   console.log('api.game-status is working')
   return $.ajax({
-    url: config.apiUrl + `/game-status`,
+    url: config.apiUrl + `/games`,
     method: 'POST',
     contentType: 'application/json',
+    Authorization: 'Token token=' + store.data,
     data
   })
 }
