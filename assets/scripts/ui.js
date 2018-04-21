@@ -67,11 +67,11 @@ const signOutSuccess = function (data) {
   $('#message').css('display', 'block')
   $('#message').text('Successfully signed out')
   $('#message').css('background-color', 'green')
-  $('#sign-in').reset()
-  $('#sign-up').reset()
+  $('#sign-in')[0].reset()
+  $('#sign-up')[0].reset()
 }
 
-const signOutFailure = function () {
+const signOutFailure = function (data) {
   $('#message').css('display', 'block')
   $('#message').text('Failure to sign out')
   $('#message').css('background-color', 'red')

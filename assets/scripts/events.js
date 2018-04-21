@@ -5,7 +5,7 @@
 const api = require('./api')
 const getFormFields = require('../../lib/get-form-fields')
 const ui = require('./ui')
-const gamelogic = require('./gamelogic')
+// const gamelogic = require('./gamelogic')
 
 const onSignUp = function (event) {
   event.preventDefault()
@@ -49,7 +49,7 @@ const onNewGame = (event) => {
 
 const onGameHistory = (event) => {
   event.preventDefault()
-  const data = getFormFields(event.target)
+  // const data = getFormFields(event.target)
   console.log('events game-history working')
   api.gameHistory()
     .then(ui.gameHistorySuccess)

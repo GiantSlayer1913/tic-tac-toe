@@ -78,7 +78,7 @@ const newGame = (data) => {
 const gameHistory = (data) => {
   console.log('api.game-history is working')
   return $.ajax({
-    url: config.apiUrl + `/games/:id`,
+    url: config.apiUrl + `/games`,
     method: 'GET',
     contentType: 'application/json',
     Authorization: 'Token token=' + store.data
