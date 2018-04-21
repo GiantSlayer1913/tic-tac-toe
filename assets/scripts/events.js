@@ -52,7 +52,7 @@ const onNewGame = (event) => {
 const onBoardClick = (event) => {
   event.preventDefault()
   if (!store.game || store.game.over) {
-    $('#jumboTron').text('Start a new game!')
+    $('#jumboTron').text('Click the new game button to start a new game!')
     return
   }
 
@@ -63,7 +63,7 @@ const onBoardClick = (event) => {
   if (gamelogic.checkWin()) {
     gameEnd = true
     store.game.over = true
-    $('#jumboTron').text(`Player ${gamelogic.checkWin()} is the winner!`)
+    gamelogic.playerShoutOut()
   } else if (gamelogic.tie()) {
     gameEnd = true
     $('#jumboTron').text('Its a tie!')

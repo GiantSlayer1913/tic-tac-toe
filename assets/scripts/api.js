@@ -52,7 +52,7 @@ const changePassword = function (data) {
 const signOut = function () {
   console.log('api.sign-out is working')
   return $.ajax({
-    url: config.apiUrl + `/sign-out/:id` + store.user.id,
+    url: config.apiUrl + `/sign-out/` + store.user.id,
     method: 'DELETE',
     headers: {
       contentType: 'application/json'
@@ -63,8 +63,8 @@ const signOut = function () {
 // Game Controls -->
 // New Game
 const newGame = (data) => {
-  $.ajax({
-    url: config.apiUrl + '/games',
+  return $.ajax({
+    url: config.apiUrl + `/games`,
     method: 'POST',
     headers: {
       contentType: 'application/json',
@@ -103,7 +103,7 @@ const leaderBoard = (data) => {
 const boardClick = (data) => {
   console.log('api.boardClick is clicking')
   return $.ajax({
-    url: config.apiUrl + `/games/:id` + store.game.id,
+    url: config.apiUrl + `/games/` + store.game.id,
     method: 'PATCH',
     headers: {
       contentType: 'application/json',

@@ -8,16 +8,14 @@ const playerOne = 'X'
 const playerTwo = 'O'
 let move = ''
 
-// Change turn function will change player turn, add either an 'X' or an 'O'
-// to a space on click, and check to see if a space has been taken
 const changePlayer = () => {
-  if (this.innerHTML !== 'X' && this.innerHTML !== 'O') {
+  if ($('.td').innerHTML !== 'X' && $('.td').innerHTML !== 'O') {
     if (move === playerOne) {
       move = playerTwo
     } else {
       move = playerOne
     }
-    this.innerHTML = move
+    $('.td').innerHTML = move
     console.log(move)
   } else {
     console.log('this square is not available at the moment')
@@ -36,7 +34,6 @@ const playerShoutOut = () => {
 }
 playerShoutOut()
 
-// Push player token, either 'X' or 'O' to the board array
 const boardMoves = (data) => {
   gameBoard[0] = $('td#1').text(api.boardClick)
   gameBoard[1] = $('td#2').text(api.boardClick)
@@ -48,7 +45,7 @@ const boardMoves = (data) => {
   gameBoard[7] = $('td#8').text(api.boardClick)
   gameBoard[8] = $('td#9').text(api.boardClick)
 }
-// Function to check for win based on board index
+
 const checkWin = (data) => {
   gameBoard[0] = document.getElementById('td#1')
   gameBoard[1] = document.getElementById('td#2')
@@ -62,41 +59,41 @@ const checkWin = (data) => {
 
   let gameEnd = false
 
-  if ((gameBoard[0].innerHTML === 'X' && gameBoard[1].innerHTML === 'X' && gameBoard[2].innerHTML === 'X') ||
-      (gameBoard[3].innerHTML === 'X' && gameBoard[4].innerHTML === 'X' && gameBoard[5].innerHTML === 'X') ||
-      (gameBoard[6].innerHTML === 'X' && gameBoard[7].innerHTML === 'X' && gameBoard[8].innerHTML === 'X') ||
-      (gameBoard[0].innerHTML === 'X' && gameBoard[4].innerHTML === 'X' && gameBoard[8].innerHTML === 'X') ||
-      (gameBoard[2].innerHTML === 'X' && gameBoard[5].innerHTML === 'X' && gameBoard[8].innerHTML === 'X') ||
-      (gameBoard[0].innerHTML === 'X' && gameBoard[3].innerHTML === 'X' && gameBoard[6].innerHTML === 'X') ||
-      (gameBoard[1].innerHTML === 'X' && gameBoard[4].innerHTML === 'X' && gameBoard[7].innerHTML === 'X') ||
-      (gameBoard[2].innerHTML === 'X' && gameBoard[4].innerHTML === 'X' && gameBoard[6].innerHTML === 'X')) {
+  if (($('td#1').innerHTML === 'X' && $('td#2').innerHTML === 'X' && $('td#3').innerHTML === 'X') ||
+      ($('td#4').innerHTML === 'X' && $('td#5').innerHTML === 'X' && $('td#6').innerHTML === 'X') ||
+      ($('td#7').innerHTML === 'X' && $('td#8').innerHTML === 'X' && $('td#9').innerHTML === 'X') ||
+      ($('td#1').innerHTML === 'X' && $('td#5').innerHTML === 'X' && $('td#9').innerHTML === 'X') ||
+      ($('td#3').innerHTML === 'X' && $('td#6').innerHTML === 'X' && $('td#9').innerHTML === 'X') ||
+      ($('td#1').innerHTML === 'X' && $('td#4').innerHTML === 'X' && $('td#7').innerHTML === 'X') ||
+      ($('td#2').innerHTML === 'X' && $('td#5').innerHTML === 'X' && $('td#8').innerHTML === 'X') ||
+      ($('td#3').innerHTML === 'X' && $('td#5').innerHTML === 'X' && $('td#7').innerHTML === 'X')) {
     console.log('X wins')
     $('#jumboTron').text('X wins')
     $('#jumboTron').css('background-color', 'green')
     gameEnd = true
     return true
-  } else if ((gameBoard[0] === 'O' && gameBoard[1] === 'O' && gameBoard[2] === 'O') ||
-             (gameBoard[3].innerHTML === 'O' && gameBoard[4].innerHTML === 'O' && gameBoard[5].innerHTML === 'O') ||
-             (gameBoard[6].innerHTML === 'O' && gameBoard[7].innerHTML === 'O' && gameBoard[8].innerHTML === 'O') ||
-             (gameBoard[0].innerHTML === 'O' && gameBoard[4].innerHTML === 'O' && gameBoard[8].innerHTML === 'O') ||
-             (gameBoard[2].innerHTML === 'O' && gameBoard[5].innerHTML === 'O' && gameBoard[8].innerHTML === 'O') ||
-             (gameBoard[0].innerHTML === 'O' && gameBoard[3].innerHTML === 'O' && gameBoard[6].innerHTML === 'O') ||
-             (gameBoard[1].innerHTML === 'O' && gameBoard[4].innerHTML === 'O' && gameBoard[7].innerHTML === 'O') ||
-             (gameBoard[2].innerHTML === 'O' && gameBoard[4].innerHTML === 'O' && gameBoard[6].innerHTML === 'O')) {
+  } else if (($('td#1').innerHTML === 'O' && $('td#2').innerHTML === 'O' && $('td#3').innerHTML === 'O') ||
+      ($('td#4').innerHTML === 'O' && $('td#5').innerHTML === 'O' && $('td#6').innerHTML === 'O') ||
+      ($('td#7').innerHTML === 'O' && $('td#8').innerHTML === 'O' && $('td#9').innerHTML === 'O') ||
+      ($('td#1').innerHTML === 'O' && $('td#5').innerHTML === 'O' && $('td#9').innerHTML === 'O') ||
+      ($('td#3').innerHTML === 'O' && $('td#6').innerHTML === 'O' && $('td#9').innerHTML === 'O') ||
+      ($('td#1').innerHTML === 'O' && $('td#4').innerHTML === 'O' && $('td#7').innerHTML === 'O') ||
+      ($('td#2').innerHTML === 'O' && $('td#5').innerHTML === 'O' && $('td#8').innerHTML === 'O') ||
+      ($('td#3').innerHTML === 'O' && $('td#5').innerHTML === 'O' && $('td#7').innerHTML === 'O')) {
     console.log('O wins')
     $('#jumboTron').text('O wins')
-    $('#jumboTron').css('background-color', 'purple')
+    $('#jumboTron').css('background-color', 'red')
     gameEnd = true
     return true
-  } else if ((gameBoard[0].innerHTML !== '' && gameBoard[1].innerHTML !== '' &&
-              gameBoard[2].innerHTML !== '' && gameBoard[3].innerHTML !== '' &&
-              gameBoard[4].innerHTML !== '' && gameBoard[5].innerHTML !== '' &&
-              gameBoard[6].innerHTML !== '' && gameBoard[7].innerHTML !== '' &&
-              gameBoard[8].innerHTML !== '')) {
+  } else if (($('td#1').innerHTML !== '' && $('td#2').innerHTML !== '' &&
+              $('td#3').innerHTML !== '' && $('td#4').innerHTML !== '' &&
+              $('td#5').innerHTML !== '' && $('td#6').innerHTML !== '' &&
+              $('td#7').innerHTML !== '' && $('td#8').innerHTML !== '' &&
+              $('td#9').innerHTML !== '')) {
     // return draw
     console.log('Its a draw')
     $('#jumboTron').text('Its a draw')
-    $('#jumboTron').css('background-color', 'purple')
+    $('#jumboTron').css('background-color', 'yellow')
     gameEnd = true
     return true
   }

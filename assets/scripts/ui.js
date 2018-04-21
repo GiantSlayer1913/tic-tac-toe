@@ -92,14 +92,13 @@ const gameHistoryFailure = (data) => {
 }
 
 // New Game functions
-const newGameSuccess = (data) => {
-  store.user = data.user
+const newGameSuccess = () => {
   $('#message').text('X')
   $('#message').css('display', 'block')
   $('#message').text('Begin New Game')
   $('#message').css('background-color', 'green')
 }
-const newGameFailure = (data) => {
+const newGameFailure = () => {
   $('#message').css('display', 'block')
   $('#message').text('Cannot Begin New Game')
   $('#message').css('background-color', 'red')
@@ -108,12 +107,12 @@ const newGameFailure = (data) => {
 // Gameboard click functions
 const boardClickSuccess = (data) => {
   store.user = data.user
-  console.log('board is working when i click it')
+  console.log('ui.boardClickSuccess')
 //  $('td#1').on('click')
 }
 const boardClickFailure = (data) => {
-  store.user = null
-  console.log('board aint workin partner')
+  store.user = data.user
+  console.log('ui.boardClickFailure')
 //  $('td#1').on('click')
 }
 module.exports = {
