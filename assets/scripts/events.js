@@ -5,7 +5,9 @@
 const api = require('./api')
 const getFormFields = require('../../lib/get-form-fields')
 const ui = require('./ui')
-// const gamelogic = require('./gamelogic')
+const gamelogic = require('./gamelogic')
+const config = require('./config')
+const store = require('./store')
 
 const onSignUp = function (event) {
   event.preventDefault()
@@ -33,7 +35,7 @@ const onChangePassword = function (event) {
     .catch(ui.changePasswordFailure)
 }
 
-const onSignOut = function () {
+const onSignOut = function (event) {
   event.preventDefault()
   api.signOut()
     .then(ui.signOutSuccess)
@@ -45,6 +47,30 @@ const onNewGame = (event) => {
   api.newGame()
     .then(ui.newGameSuccess)
     .catch(ui.newGameFailure)
+}
+
+const onBoardClick = (event) => {
+  event.preventDefault()
+  if (!store.game || store.game.over) {
+    $('#jumboTron').text('Start a new game!')
+    return
+  }
+
+  const index = event.target.id
+  const currentPlayer = gamelogic.changePlayer()
+
+  let gameEnd = false
+  if (gamelogic.checkWin()) {
+    gameEnd = true
+    store.game.over = true
+    $('#jumboTron').text(`Player ${gamelogic.checkWin()} is the winner!`)
+  } else if (gamelogic.tie()) {
+    gameEnd = true
+    $('#jumboTron').text('Its a tie!')
+  }
+  api.boardClick()
+    .then(ui.boardClickSuccess)
+    .catch(ui.boardClickFailure)
 }
 
 const onGameHistory = (event) => {
@@ -72,7 +98,8 @@ const addHandlers = () => {
   $('#sign-out').on('submit', onSignOut)
   $('#new-game').on('submit', onNewGame)
   $('#game-history').on('submit', onGameHistory)
-  $('game-status').on('submit', onGameStatus)
+  $('#game-status').on('submit', onGameStatus)
+  $('td').on('click', onBoardClick)
 }
 
 module.exports = {

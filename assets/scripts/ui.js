@@ -26,7 +26,7 @@ const signInSuccess = function (data) {
   $('#sign-in').css('display', 'none')
   $('#change-password').css('display', 'block')
   $('#sign-out').css('display', 'block')
-  $('#gameBoard').css('display', 'inline-block')
+  $('#board-click').css('display', 'inline-block')
   $('#new-game').css('display', 'block')
   $('#game-history').css('display', 'block')
   $('#change-password')[0].reset()
@@ -61,7 +61,7 @@ const signOutSuccess = function (data) {
   $('#sign-in').css('display', 'block')
   $('#change-password').css('display', 'none')
   $('#sign-out').css('display', 'none')
-  $('#gameBoard').css('display', 'none')
+  $('#board-click').css('display', 'none')
   $('#new-game').css('display', 'none')
   $('#game-history').css('display', 'none')
   $('#message').css('display', 'block')
@@ -106,8 +106,15 @@ const newGameFailure = (data) => {
 }
 
 // Gameboard click functions
-const playX = () => {
-  document.getElementById('#gameBoard').innerHTML = 'X'
+const boardClickSuccess = (data) => {
+  store.user = data.user
+  console.log('board is working when i click it')
+//  $('td#1').on('click')
+}
+const boardClickFailure = (data) => {
+  store.user = null
+  console.log('board aint workin partner')
+//  $('td#1').on('click')
 }
 module.exports = {
   signUpSuccess,
@@ -122,5 +129,6 @@ module.exports = {
   gameHistoryFailure,
   newGameSuccess,
   newGameFailure,
-  playX
+  boardClickSuccess,
+  boardClickFailure
 }

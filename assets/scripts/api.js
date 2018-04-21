@@ -1,5 +1,6 @@
 const config = require('./config')
 const store = require('./store')
+const ui = require('./ui')
 
 // Message timeout function
 // const onSetTimeout = (event) => {
@@ -51,11 +52,10 @@ const changePassword = function (data) {
 const signOut = function () {
   console.log('api.sign-out is working')
   return $.ajax({
-    url: config.apiUrl + `/sign-out/` + store.user.id,
+    url: config.apiUrl + `/sign-out/:id` + store.user.id,
     method: 'DELETE',
     headers: {
-      contentType: 'application/json',
-      Authorization: 'Token token=' + store.user.token
+      contentType: 'application/json'
     }
   })
 }
@@ -63,16 +63,18 @@ const signOut = function () {
 // Game Controls -->
 // New Game
 const newGame = (data) => {
-  console.log('api.New Game is working')
-  return $.ajax({
+  $.ajax({
     url: config.apiUrl + '/games',
     method: 'POST',
     headers: {
       contentType: 'application/json',
       Authorization: `Token token=${store.user.token}`
-    },
-    data
+    }
   })
+    .then(function (data) {
+      console.log('after create, data is', data)
+      store.game = data.game
+    })
 }
 // Game history
 const gameHistory = (data) => {
@@ -81,7 +83,7 @@ const gameHistory = (data) => {
     url: config.apiUrl + `/games`,
     method: 'GET',
     contentType: 'application/json',
-    Authorization: 'Token token=' + store.data
+    Authorization: `Token token=` + store.data
   })
 }
 
@@ -91,13 +93,25 @@ const leaderBoard = (data) => {
     url: config.apiUrl + `/games/`,
     method: 'POST',
     contentType: 'application/json',
-    Authorization: 'Token token=' + store.data,
+    Authorization: `Token token=` + store.data,
     data
   })
 }
 
 // Gameboard api
 
+const boardClick = (data) => {
+  console.log('api.boardClick is clicking')
+  return $.ajax({
+    url: config.apiUrl + `/games/:id` + store.game.id,
+    method: 'PATCH',
+    headers: {
+      contentType: 'application/json',
+      Authorization: `Token token= + ${store.user.token}`
+    },
+    data
+  })
+}
 module.exports = {
   signUp,
   signIn,
@@ -105,5 +119,16 @@ module.exports = {
   signOut,
   gameHistory,
   newGame,
-  leaderBoard
+  leaderBoard,
+  boardClick
 }
+
+// const data = {
+//   'game': {
+//     'cell': {
+//       'index': 0, // position on board
+//       'value': 'x' // current user's turn
+//     },
+//     'over': false // if game is over or not
+//   }
+// }
