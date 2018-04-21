@@ -85,7 +85,7 @@ const gameHistory = (data) => {
   })
 }
 
-const gameStatus = (data) => {
+const leaderBoard = (data) => {
   console.log('api.game-status is working')
   return $.ajax({
     url: config.apiUrl + `/games/`,
@@ -105,5 +105,5 @@ module.exports = {
   signOut,
   gameHistory,
   newGame,
-  gameStatus
+  leaderBoard
 }

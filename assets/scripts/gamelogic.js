@@ -1,63 +1,64 @@
 const api = require('./api')
 const store = require('./store')
-// const ui = require('./ui')
-// const data = require('./api')
+const ui = require('./ui')
+const data = require('./api')
 
 let gameBoard = ['', '', '', '', '', '', '', '', '']
-console.log(gameBoard)
-let currentPlayer = 'X'
+const playerOne = 'X'
+const playerTwo = 'O'
+let move = ''
 
 // Change turn function will change player turn, add either an 'X' or an 'O'
 // to a space on click, and check to see if a space has been taken
-const playerTurn = () => {
+const changePlayer = () => {
   if (this.innerHTML !== 'X' && this.innerHTML !== 'O') {
-    if (currentPlayer === 'X') {
-      currentPlayer = 'O'
+    if (move === playerOne) {
+      move = playerTwo
     } else {
-      currentPlayer = 'X'
+      move = playerOne
     }
-    this.innerHTML = currentPlayer
-    console.log(currentPlayer)
+    this.innerHTML = move
+    console.log(move)
   } else {
     console.log('this square is not available at the moment')
     $('#jumboTron').text('Can\'t Play Here! Try another spot.')
   }
-  return currentPlayer
+  return move
 }
 
-// const playerShoutOut = () => {
-//   if (currentPlayer === 'X') {
-//     $('#jumboTron').text('Player X it is your turn')
-//   } else if (currentPlayer === 'X') {
-//     $('#jumboTron').text('Player O it is your turn')
-//   }
-//   return currentPlayer
-// }
-// playerShoutOut()
+const playerShoutOut = () => {
+  if (move === 'X') {
+    $('#jumboTron').text('Player X it is your turn')
+  } else if (move === 'X') {
+    $('#jumboTron').text('Player O it is your turn')
+  }
+  return move
+}
+playerShoutOut()
 
 // Push player token, either 'X' or 'O' to the board array
 const boardMoves = (data) => {
-  gameBoard[0] = $('#r1c1').text(api.gameStatus)
-  gameBoard[1] = $('#r1c2').text(api.gameStatus)
-  gameBoard[2] = $('#r1c3').text(api.gameStatus)
-  gameBoard[3] = $('#r2c1').text(api.gameStatus)
-  gameBoard[4] = $('#r2c2').text(api.gameStatus)
-  gameBoard[5] = $('#r2c3').text(api.gameStatus)
-  gameBoard[6] = $('#r3c1').text(api.gameStatus)
-  gameBoard[7] = $('#r3c2').text(api.gameStatus)
-  gameBoard[8] = $('#r3c3').text(api.gameStatus)
+  gameBoard[0] = $('td#r1c1').text(api.leaderBoard)
+  gameBoard[1] = $('td#r1c2').text(api.leaderBoard)
+  gameBoard[2] = $('td#r1c3').text(api.leaderBoard)
+  gameBoard[3] = $('td#r2c1').text(api.leaderBoard)
+  gameBoard[4] = $('td#r2c2').text(api.leaderBoard)
+  gameBoard[5] = $('td#r2c3').text(api.leaderBoard)
+  gameBoard[6] = $('td#r3c1').text(api.leaderBoard)
+  gameBoard[7] = $('td#r3c2').text(api.leaderBoard)
+  gameBoard[8] = $('td#r3c3').text(api.leaderBoard)
 }
 // Function to check for win based on board index
-const checkWin = () => {
-  gameBoard[0] = document.getElementById('r1c1')
-  gameBoard[1] = document.getElementById('r1c2')
-  gameBoard[2] = document.getElementById('r1c3')
-  gameBoard[3] = document.getElementById('r2c1')
-  gameBoard[4] = document.getElementById('r2c2')
-  gameBoard[5] = document.getElementById('r2c3')
-  gameBoard[6] = document.getElementById('r3c1')
-  gameBoard[7] = document.getElementById('r3c2')
-  gameBoard[8] = document.getElementById('r3c3')
+const checkWin = (data) => {
+  gameBoard[0] = document.getElementById('td#r1c1')
+  gameBoard[1] = document.getElementById('td#r1c2')
+  gameBoard[2] = document.getElementById('td#r1c3')
+  gameBoard[3] = document.getElementById('td#r2c1')
+  gameBoard[4] = document.getElementById('td#r2c2')
+  gameBoard[5] = document.getElementById('td#r2c3')
+  gameBoard[6] = document.getElementById('td#r3c1')
+  gameBoard[7] = document.getElementById('td#r3c2')
+  gameBoard[8] = document.getElementById('td#r3c3')
 
   let gameEnd = false
 
@@ -105,13 +106,14 @@ const checkWin = () => {
 const newGame = function (event) {
   event.preventDefault()
   gameBoard = ['', '', '', '', '', '', '', '', '']
-  let currentPlayer = 'X'
-  $('#gameBoard').show()
+  move = playerTwo
+  $('#gameBoard').hide()
   $('#jumboTron').show()
+  store.game = data.game
 }
 
 module.exports = {
-  playerTurn,
+  changePlayer,
   boardMoves,
   checkWin,
   newGame
