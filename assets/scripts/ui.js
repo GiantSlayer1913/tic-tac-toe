@@ -65,9 +65,11 @@ const signOutSuccess = function (data) {
   $('#message').css('display', 'block')
   $('#message').text('Successfully signed out')
   $('#message').css('background-color', 'green')
-  $('#sign-in')[0].reset()
-  $('#sign-up')[0].reset()
-  store.user = null
+  $('#sign-in[type=text]').val('')
+  $('#sign-in[type=password]').val('')
+  $('#sign-up[type=text]').val('')
+  $('#sign-up[type=password]').val('')
+  store.user.id = null
 }
 
 const signOutFailure = function () {

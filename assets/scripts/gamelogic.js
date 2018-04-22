@@ -1,6 +1,6 @@
-const api = require('./api')
+// const api = require('./api')
 const store = require('./store')
-const ui = require('./ui')
+// const ui = require('./ui')
 const data = require('./api')
 const events = require('./events')
 
@@ -150,7 +150,6 @@ module.exports = {
   checkWin,
   newGame
 }
-
 
 // const checkWin = (data) => {
 //   gameBoard[0] = document.getElementById('td#1')

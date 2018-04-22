@@ -77,6 +77,21 @@ const newGame = (data) => {
       ui.newGameSuccess()
     })
 }
+
+// Gameboard api
+const boardClick = (data) => {
+  console.log('api.boardClick is clicking')
+  return $.ajax({
+    url: config.apiUrl + '/games/' + store.game.id,
+    method: 'PATCH',
+    headers: {
+      contentType: 'application/json',
+      Authorization: `Token token= ${store.user.token}`
+    },
+    data
+  })
+}
+
 // Game history
 const gameHistory = (data) => {
   console.log('api.game-history is working')
@@ -99,20 +114,6 @@ const leaderBoard = (data) => {
   })
 }
 
-// Gameboard api
-
-const boardClick = (data) => {
-  console.log('api.boardClick is clicking')
-  return $.ajax({
-    url: config.apiUrl + '/games/' + store.game.id,
-    method: 'PATCH',
-    headers: {
-      contentType: 'application/json',
-      Authorization: `Token token= ${store.user.token}`
-    },
-    data
-  })
-}
 module.exports = {
   signUp,
   signIn,
