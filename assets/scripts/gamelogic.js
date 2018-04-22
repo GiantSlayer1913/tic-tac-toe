@@ -4,11 +4,6 @@ const store = require('./store')
 const data = require('./api')
 const events = require('./events')
 
-const playerOne = 'X'
-const playerTwo = 'O'
-let move = ''
-let gameBoard = ['', '', '', '', '', '', '', '', '']
-
 const changePlayer = () => {
   if (gameBoard !== ['X'] && gameBoard !== ['O']) {
     if (move === playerOne) {
@@ -35,97 +30,18 @@ const champion = (winner) => {
     changePlayer()
   }
 }
-const checkWin = (gamBoard) => {
-  for (let i = 0; i < gameBoard.length; i++) {
-    if ((gameBoard[0] === 'X') && (gameBoard[1] === gameBoard[0]) && (gameBoard[2] === gameBoard[0]) && (gameBoard[0] !== '') && (gameBoard[1] !== '') && (gameBoard[2] !== '')) {
-      champion(playerOne)
-      console.log(playerOne + ' Wins!' + ' Winning combo top row')
-      console.log(gameBoard) // [0, 1, 2]
-    } else if ((gameBoard[3] === 'X') && (gameBoard[4] === gameBoard[3]) && (gameBoard[5] === gameBoard[3]) && (gameBoard[3] !== '') && (gameBoard[4] !== '') && (gameBoard[5] !== '')) {
-      champion(playerOne)
-      console.log(playerOne + ' Wins!' + 'Winning combo middle row')
-      console.log(gameBoard) // [3, 4, 5]
-    } else if ((gameBoard[6] === 'X') && (gameBoard[7] === gameBoard[6]) && (gameBoard[8] === gameBoard[6]) && (gameBoard[6] !== '') && (gameBoard[7] !== '') && (gameBoard[8] !== '')) {
-      champion(playerOne)
-      console.log(playerOne + ' Wins!' + 'Winning combo bottom row')
-      console.log(gameBoard) // [6, 7, 8]
-    } else if ((gameBoard[0] === 'X') && (gameBoard[4] === gameBoard[0]) && (gameBoard[8] === gameBoard[0]) && (gameBoard[0] !== '') && (gameBoard[4] !== '') && (gameBoard[8] !== '')) {
-      champion(playerOne)
-      console.log(playerOne + ' Wins!' + 'Winning combo diagonal')
-      console.log(gameBoard) // [0, 4, 8]
-    } else if ((gameBoard[2] === 'X') && (gameBoard[4] === gameBoard[2]) && (gameBoard[6] === gameBoard[2]) && (gameBoard[2] !== '') && (gameBoard[4] !== '') && (gameBoard[6] !== '')) {
-      champion(playerOne)
-      console.log(playerOne + ' Wins!' + 'Winning combo diagonal')
-      console.log(gameBoard) // [2, 4, 6]
-    } else if ((gameBoard[2] === 'X') && (gameBoard[5] === gameBoard[2]) && (gameBoard[8] === gameBoard[2]) && (gameBoard[2] !== '') && (gameBoard[5] !== '') && (gameBoard[8] !== '')) {
-      champion(playerOne)
-      console.log(playerOne + ' Wins!' + 'Winning combo right column')
-      console.log(gameBoard) // [2, 5, 8]
-    } else if ((gameBoard[2] === 'X') && (gameBoard[5] === gameBoard[2]) && (gameBoard[8] === gameBoard[2]) && (gameBoard[2] !== '') && (gameBoard[5] !== '') && (gameBoard[8] !== '')) {
-      champion(playerOne)
-      console.log(playerOne + ' Wins!' + 'Winning combo right column')
-      console.log(gameBoard) // [2, 5, 8]
-    } else if ((gameBoard[0] === 'X') && (gameBoard[3] === gameBoard[0]) && (gameBoard[6] === gameBoard[0]) && (gameBoard[0] !== '') && (gameBoard[3] !== '') && (gameBoard[6] !== '')) {
-      champion(playerOne)
-      console.log(playerOne + ' Wins!' + 'Winning combo left column')
-      console.log(gameBoard) // [0, 3, 6]
-    } else if ((gameBoard[1] === 'O') && (gameBoard[1] === gameBoard[4]) && (gameBoard[7]) === (gameBoard[1]) && (gameBoard[1] !== '') && (gameBoard[4] !== '') && (gameBoard[7] !== '')) {
-      champion(playerTwo)
-      console.log(playerTwo + ' Wins!' + ' Winning combo middle column')
-      console.log(gameBoard) // [1, 4, 7,]
-    } else if (gameBoard[0] === 'O' && gameBoard[1] === gameBoard[0] && gameBoard[2] === gameBoard[0] && gameBoard[0] !== '' && gameBoard[1] !== '' && gameBoard[2] !== '') {
-      champion(playerTwo)
-      console.log(playerTwo + ' Wins!' + ' Winning combo top row')
-      console.log(gameBoard) // [0, 1, 2]
-    } else if (gameBoard[3] === 'O' && gameBoard[4] === gameBoard[3] && gameBoard[5] === gameBoard[3] && gameBoard[3] !== '' && gameBoard[4] !== '' && gameBoard[5] !== '') {
-      champion(playerTwo)
-      console.log(playerTwo + ' Wins!' + 'Winning combo middle row')
-      console.log(gameBoard) // [3, 4, 5]
-    } else if (gameBoard[6] === 'O' && gameBoard[7] === gameBoard[6] && gameBoard[8] === gameBoard[6] && gameBoard[6] !== '' && gameBoard[7] !== '' && gameBoard[8] !== '') {
-      champion(playerTwo)
-      console.log(playerTwo + ' Wins!' + 'Winning combo bottom row')
-      console.log(gameBoard) // [6, 7, ]
-    } else if (gameBoard[0] === 'O' && gameBoard[4] === gameBoard[0] && gameBoard[8] === gameBoard[0] && gameBoard[0] !== '' && gameBoard[4] !== '' && gameBoard[8] !== '') {
-      champion(playerTwo)
-      console.log(playerTwo + ' Wins!' + 'Winning combo diagonal')
-      console.log(gameBoard) // [6, 7, ]
-    } else if (gameBoard[2] === 'O' && gameBoard[5] === gameBoard[2] && gameBoard[8] === gameBoard[2] && gameBoard[2] !== '' && gameBoard[5] !== '' && gameBoard[8] !== '') {
-      champion(playerTwo)
-      console.log(playerTwo + ' Wins!' + 'Winning combo right column')
-      console.log(gameBoard) // [2, 5, 8]
-    } else if (gameBoard[2] === 'O' && gameBoard[5] === gameBoard[2] && gameBoard[8] === gameBoard[2] && gameBoard[2] !== '' && gameBoard[5] !== '' && gameBoard[8] !== '') {
-      champion(playerTwo)
-      console.log(playerTwo + ' Wins!' + 'Winning combo right column')
-      console.log(gameBoard) // [2, 5, 8]
-    } else if (gameBoard[0] === 'O' && gameBoard[3] === gameBoard[0] && gameBoard[6] === gameBoard[0] && gameBoard[0] !== '' && gameBoard[3] !== '' && gameBoard[6] !== '') {
-      champion(playerTwo)
-      console.log(playerTwo + ' Wins!' + 'Winning combo left column')
-      console.log(gameBoard) // [0, 3, 6]
-    } else if (gameBoard[1] === 'O' && gameBoard[1] === gameBoard[4] && gameBoard[7] === gameBoard[1] && gameBoard[1] !== '' && gameBoard[4] !== '' && gameBoard[7] !== '') {
-      champion(playerTwo)
-      console.log(playerTwo + ' Wins!' + ' Winning combo middle column')
-      console.log(gameBoard) // [1, 4, 7,]
-    } else if ((gameBoard[0] !== gameBoard[1] && gameBoard[2]) || (gameBoard[3] !== gameBoard[4] && gameBoard[5]) ||
-      (gameBoard[6] !== gameBoard[7] && gameBoard[8]) || (gameBoard[0] !== gameBoard[3] && gameBoard[6]) ||
-      (gameBoard[1] !== gameBoard[4] && gameBoard[7]) || (gameBoard[2] !== gameBoard[5] && gameBoard[8]) ||
-      (gameBoard[0] !== gameBoard[4] && gameBoard[8]) || (gameBoard[2] !== gameBoard[4] && gameBoard[6])) {
-      champion(!playerOne || !playerTwo)
-    } else {
-      changePlayer()
-    }
-  }
-}
-const boardMoves = (data) => {
-  gameBoard[0] = $('td#0').on(events.onBoardClick)
-  gameBoard[1] = $('td#1').on(events.onBoardClick)
-  gameBoard[2] = $('td#2').on(events.onBoardClick)
-  gameBoard[3] = $('td#3').on(events.onBoardClick)
-  gameBoard[4] = $('td#4').on(events.onBoardClick)
-  gameBoard[5] = $('td#5').on(events.onBoardClick)
-  gameBoard[6] = $('td#6').on(events.onBoardClick)
-  gameBoard[7] = $('td#7').on(events.onBoardClick)
-  gameBoard[8] = $('td#8').on(events.onBoardClick)
-}
+
+// const boardMoves = (data) => {
+//   gameBoard[0] = $('td#0').on(events.onBoardClick)
+//   gameBoard[1] = $('td#1').on(events.onBoardClick)
+//   gameBoard[2] = $('td#2').on(events.onBoardClick)
+//   gameBoard[3] = $('td#3').on(events.onBoardClick)
+//   gameBoard[4] = $('td#4').on(events.onBoardClick)
+//   gameBoard[5] = $('td#5').on(events.onBoardClick)
+//   gameBoard[6] = $('td#6').on(events.onBoardClick)
+//   gameBoard[7] = $('td#7').on(events.onBoardClick)
+//   gameBoard[8] = $('td#8').on(events.onBoardClick)
+// }
 const playerShoutOut = () => {
   if (move === 'X') {
     $('#jumboTron').text('Player X it is your turn')
@@ -135,21 +51,20 @@ const playerShoutOut = () => {
   return move
 }
 playerShoutOut()
+store.game = data.game
 
-const newGame = function (event) {
-  event.preventDefault()
-  gameBoard = ['', '', '', '', '', '', '', '', '']
-  move = playerTwo
-  $('td').hide()
-  $('#jumboTron').show()
-  store.game = data.game
-}
 module.exports = {
   changePlayer,
   boardMoves,
-  checkWin,
-  newGame
+  checkWin
 }
+
+// const newGame = function (event) {
+//   event.preventDefault()
+//   gameBoard = ['', '', '', '', '', '', '', '', '']
+//   move = playerTwo
+//   $('td').hide()
+//   $('#jumboTron').show()
 
 // const checkWin = (data) => {
 //   gameBoard[0] = document.getElementById('td#1')
