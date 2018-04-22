@@ -55,8 +55,6 @@ const changePasswordFailure = function () {
 
 // Sign-out functions
 const signOutSuccess = function (data) {
-  console.log(data)
-  store.user = null
   $('#sign-up').css('display', 'block')
   $('#sign-in').css('display', 'block')
   $('#change-password').css('display', 'none')
@@ -69,9 +67,10 @@ const signOutSuccess = function (data) {
   $('#message').css('background-color', 'green')
   $('#sign-in')[0].reset()
   $('#sign-up')[0].reset()
+  store.user = null
 }
 
-const signOutFailure = function (data) {
+const signOutFailure = function () {
   $('#message').css('display', 'block')
   $('#message').text('Failure to sign out')
   $('#message').css('background-color', 'red')
@@ -93,27 +92,25 @@ const gameHistoryFailure = (data) => {
 
 // New Game functions
 const newGameSuccess = () => {
-  $('#message').text('X')
-  $('#message').css('display', 'block')
+  $('#jumboTron').text('X')
+  $('#jumboTron').css('display', 'block')
   $('#message').text('Begin New Game')
   $('#message').css('background-color', 'green')
 }
 const newGameFailure = () => {
   $('#message').css('display', 'block')
-  $('#message').text('Cannot Begin New Game')
-  $('#message').css('background-color', 'red')
+  $('#jumboTron').text('Cannot Begin New Game')
+  $('#jumboTron').css('background-color', 'red')
 }
 
 // Gameboard click functions
 const boardClickSuccess = (data) => {
   store.user = data.user
   console.log('ui.boardClickSuccess')
-//  $('td#1').on('click')
 }
 const boardClickFailure = (data) => {
   store.user = data.user
   console.log('ui.boardClickFailure')
-//  $('td#1').on('click')
 }
 module.exports = {
   signUpSuccess,

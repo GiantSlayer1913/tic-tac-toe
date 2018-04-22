@@ -12,7 +12,7 @@ const ui = require('./ui')
 const signUp = function (data) {
   console.log('api.sign-up is working')
   return $.ajax({
-    url: config.apiUrl + `/sign-up`,
+    url: config.apiUrl + '/sign-up',
     method: 'POST',
     headers: {
       contentType: 'application/json'
@@ -25,7 +25,7 @@ const signUp = function (data) {
 const signIn = function (data) {
   console.log('api.sign-in is working')
   return $.ajax({
-    url: config.apiUrl + `/sign-in`,
+    url: config.apiUrl + '/sign-in',
     method: 'POST',
     headers: {
       contentType: 'application/json'
@@ -38,7 +38,7 @@ const signIn = function (data) {
 const changePassword = function (data) {
   console.log('api.change-Password is working')
   return $.ajax({
-    url: config.apiUrl + `/change-password/` + store.user.id,
+    url: config.apiUrl + '/change-password/' + store.user.id,
     method: 'PATCH',
     headers: {
       contentType: 'application/json',
@@ -50,12 +50,12 @@ const changePassword = function (data) {
 
 // Sign-out
 const signOut = function () {
-  console.log('api.sign-out is working')
   return $.ajax({
-    url: config.apiUrl + `/sign-out/` + store.user.id,
+    url: config.apiUrl + '/sign-out',
     method: 'DELETE',
     headers: {
-      contentType: 'application/json'
+      contentType: 'application/json',
+      Authorization: 'Token token=' + store.user.token
     }
   })
 }
@@ -64,7 +64,7 @@ const signOut = function () {
 // New Game
 const newGame = (data) => {
   return $.ajax({
-    url: config.apiUrl + `/games`,
+    url: config.apiUrl + '/games',
     method: 'POST',
     headers: {
       contentType: 'application/json',
@@ -74,13 +74,14 @@ const newGame = (data) => {
     .then(function (data) {
       console.log('after create, data is', data)
       store.game = data.game
+      ui.newGameSuccess()
     })
 }
 // Game history
 const gameHistory = (data) => {
   console.log('api.game-history is working')
   return $.ajax({
-    url: config.apiUrl + `/games`,
+    url: config.apiUrl + '/games',
     method: 'GET',
     contentType: 'application/json',
     Authorization: `Token token=` + store.data
@@ -90,7 +91,7 @@ const gameHistory = (data) => {
 const leaderBoard = (data) => {
   console.log('api.game-status is working')
   return $.ajax({
-    url: config.apiUrl + `/games/`,
+    url: config.apiUrl + '/games/',
     method: 'POST',
     contentType: 'application/json',
     Authorization: `Token token=` + store.data,
@@ -103,11 +104,11 @@ const leaderBoard = (data) => {
 const boardClick = (data) => {
   console.log('api.boardClick is clicking')
   return $.ajax({
-    url: config.apiUrl + `/games/` + store.game.id,
+    url: config.apiUrl + '/games/' + store.game.id,
     method: 'PATCH',
     headers: {
       contentType: 'application/json',
-      Authorization: `Token token= + ${store.user.token}`
+      Authorization: `Token token= ${store.user.token}`
     },
     data
   })

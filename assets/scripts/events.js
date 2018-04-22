@@ -9,6 +9,16 @@ const gamelogic = require('./gamelogic')
 const config = require('./config')
 const store = require('./store')
 
+const data = {
+  'game': {
+    'cell': {
+      'index': 0, // position on board
+      'value': 'x' // current user's turn
+    },
+    'over': false // if game is over or not
+  }
+}
+
 const onSignUp = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
@@ -55,20 +65,7 @@ const onBoardClick = (event) => {
     $('#jumboTron').text('Click the new game button to start a new game!')
     return
   }
-
-  const index = event.target.id
-  const currentPlayer = gamelogic.changePlayer()
-
-  let gameEnd = false
-  if (gamelogic.checkWin()) {
-    gameEnd = true
-    store.game.over = true
-    gamelogic.playerShoutOut()
-  } else if (gamelogic.tie()) {
-    gameEnd = true
-    $('#jumboTron').text('Its a tie!')
-  }
-  api.boardClick()
+  api.boardClick(data)
     .then(ui.boardClickSuccess)
     .catch(ui.boardClickFailure)
 }
