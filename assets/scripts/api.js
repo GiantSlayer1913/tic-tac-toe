@@ -2,12 +2,6 @@ const config = require('./config')
 const store = require('./store')
 const ui = require('./ui')
 
-// Message timeout function
-// const onSetTimeout = (event) => {
-//   event.preventDefault()
-//   document.getElementById('#message').innerHTML = ''
-// }
-
 // Sign-up
 const signUp = function (data) {
   console.log('api.sign-up is working')
@@ -51,7 +45,7 @@ const changePassword = function (data) {
 // Sign-out
 const signOut = function () {
   return $.ajax({
-    url: config.apiUrl + '/sign-out',
+    url: config.apiUrl + '/sign-out/' + store.user.id,
     method: 'DELETE',
     headers: {
       contentType: 'application/json',
@@ -124,13 +118,3 @@ module.exports = {
   leaderBoard,
   boardClick
 }
-
-// const data = {
-//   'game': {
-//     'cell': {
-//       'index': 0, // position on board
-//       'value': 'x' // current user's turn
-//     },
-//     'over': false // if game is over or not
-//   }
-// }

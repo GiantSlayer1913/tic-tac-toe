@@ -5,13 +5,13 @@
 const api = require('./api')
 const getFormFields = require('../../lib/get-form-fields')
 const ui = require('./ui')
-const gamelogic = require('./gamelogic')
+// const gamelogic = require('./gamelogic')
 // const config = require('./config')
 const store = require('./store')
 
 
 
-const onSignUp = function(event) {
+const onSignUp = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
   console.log(data)
@@ -20,7 +20,7 @@ const onSignUp = function(event) {
     .catch(ui.signUpFailure)
 }
 
-const onSignIn = function(event) {
+const onSignIn = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
   console.log(data)
@@ -29,7 +29,7 @@ const onSignIn = function(event) {
     .catch(ui.signInFailure)
 }
 
-const onChangePassword = function(event) {
+const onChangePassword = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
   api.changePassword(data)
@@ -37,7 +37,7 @@ const onChangePassword = function(event) {
     .catch(ui.changePasswordFailure)
 }
 
-const onSignOut = function(event) {
+const onSignOut = function (event) {
   event.preventDefault()
   api.signOut()
     .then(ui.signOutSuccess)
@@ -51,22 +51,21 @@ const onNewGame = (event) => {
     .catch(ui.newGameFailure)
 }
 
-// declare game board empty to start
-let gameBoard = ['', '', '', '', '', '', '', '', '']
-
-// declare playerOne and Two tokens
-const playerOne = 'X'
-const playerTwo = 'O'
-
-// start first move with playerOne
-let move = playerOne
-
 // 2. events.js add a click event for the element
 // 2.1 When board cell is clicked...
 const onBoardClick = (event) => {
-
   // prevent default action
   event.preventDefault()
+
+  // declare game board empty to start
+  let gameBoard = ['', '', '', '', '', '', '', '', '']
+
+  // declare playerOne and Two tokens
+  const playerOne = 'X'
+  const playerTwo = 'O'
+
+  // start first move with playerOne
+  let move = playerOne
 
   // if no new game is created or game is over then do not play
   if (!store.game || store.game.over) {
@@ -84,175 +83,79 @@ const onBoardClick = (event) => {
   //      2.1.3 add player to position in game board
   gameBoard[index] = move
 
-//      2.1.4 check for winner
-const checkWin = (gamBoard) => {
-  for (let i = 0; i < gameBoard.length; i++) {
-
-    // [0, 1, 2]
-    if ((gameBoard[0] === gameBoard[1] === gameBoard[2]) && (gameBoard[0] !== ''
-     && gameBoard[1] !== '' && gameBoard[2] !== '')) {
-      champion(playerOne)
-      console.log(playerOne + ' Wins!' + ' Winning combo top row')
-      console.log(gameBoard)
-
-      // [3, 4, 5]
-    } else if ((gameBoard[3] === 'X') && (gameBoard[4] === gameBoard[3]) &&
-      (gameBoard[5] === gameBoard[3]) && (gameBoard[3] !== '') && (gameBoard[4]
-      !== '') && (gameBoard[5] !== '')) {
-      champion(playerOne)
-      console.log(playerOne + ' Wins!' + 'Winning combo middle row')
-      console.log(gameBoard)
-
-       // [6, 7, 8]
-    } else if ((gameBoard[6] === 'X') && (gameBoard[7] === gameBoard[6]) &&
-      (gameBoard[8] === gameBoard[6]) && (gameBoard[6] !== '') && (gameBoard[7]
-      !== '') && (gameBoard[8] !== '')) {
-      champion(playerOne)
-      console.log(playerOne + ' Wins!' + 'Winning combo bottom row')
-      console.log(gameBoard)
-
-      // [0, 4, 8]
-    } else if ((gameBoard[0] === 'X') && (gameBoard[4] === gameBoard[0]) &&
-      (gameBoard[8] === gameBoard[0]) && (gameBoard[0] !== '') && (gameBoard[4]
-      !== '') && (gameBoard[8] !== '')) {
-      champion(playerOne)
-      console.log(playerOne + ' Wins!' + 'Winning combo diagonal')
-      console.log(gameBoard)
-
-      // [2, 4, 6]
-    } else if ((gameBoard[2] === 'X') && (gameBoard[4] === gameBoard[2]) &&
-      (gameBoard[6] === gameBoard[2]) && (gameBoard[2] !== '') && (gameBoard[4]
-      !== '') && (gameBoard[6] !== '')) {
-      champion(playerOne)
-      console.log(playerOne + ' Wins!' + 'Winning combo diagonal')
-      console.log(gameBoard)
-
-      // [2, 5, 8]
-    } else if ((gameBoard[2] === 'X') && (gameBoard[5] === gameBoard[2]) &&
-      (gameBoard[8] === gameBoard[2]) && (gameBoard[2] !== '') && (gameBoard[5]
-      !== '') && (gameBoard[8] !== '')) {
-      champion(playerOne)
-      console.log(playerOne + ' Wins!' + 'Winning combo right column')
-      console.log(gameBoard)
-
-      // [1, 4, 7]
-    } else if ((gameBoard[1] === 'X') && (gameBoard[4] === gameBoard[1]) &&
-      (gameBoard[7] === gameBoard[1]) && (gameBoard[1] !== '') && (gameBoard[4]
-      !== '') && (gameBoard[7] !== '')) {
-      champion(playerOne)
-      console.log(playerOne + ' Wins!' + 'Winning combo middle column')
-      console.log(gameBoard)
-
-      // [0, 3, 6]
-    } else if ((gameBoard[0] === 'X') && (gameBoard[3] === gameBoard[0]) &&
-      (gameBoard[6] === gameBoard[0]) && (gameBoard[0] !== '') && (gameBoard[3]
-      !== '') && (gameBoard[6] !== '')) {
-      champion(playerOne)
-      console.log(playerOne + ' Wins!' + 'Winning combo left column')
-      console.log(gameBoard)
-
-      // [1, 4, 7]
-    } else if ((gameBoard[1] === 'O') && (gameBoard[1] === gameBoard[4]) &&
-      (gameBoard[7]) === (gameBoard[1]) && (gameBoard[1] !== '') && (gameBoard[4]
-      !== '') && (gameBoard[7] !== '')) {
-      champion(playerTwo)
-      console.log(playerTwo + ' Wins!' + ' Winning combo middle column')
-      console.log(gameBoard)
-
-      // [0, 1, 2]
-    } else if (gameBoard[0] === 'O' && gameBoard[1] === gameBoard[0] &&
-      gameBoard[2] === gameBoard[0] && gameBoard[0] !== '' && gameBoard[1]
-      !== '' && gameBoard[2] !== '') {
-      champion(playerTwo)
-      console.log(playerTwo + ' Wins!' + ' Winning combo top row')
-      console.log(gameBoard)
-
-      // [3, 4, 5]
-    } else if (gameBoard[3] === 'O' && gameBoard[4] === gameBoard[3] &&
-      gameBoard[5] === gameBoard[3] && gameBoard[3] !== '' && gameBoard[4]
-      !== '' && gameBoard[5] !== '') {
-      champion(playerTwo)
-      console.log(playerTwo + ' Wins!' + 'Winning combo middle row')
-      console.log(gameBoard)
-
-      // [6, 7, 8]
-    } else if (gameBoard[6] === 'O' && gameBoard[7] === gameBoard[6] &&
-      gameBoard[8] === gameBoard[6] && gameBoard[6] !== '' && gameBoard[7]
-      !== '' && gameBoard[8] !== '') {
-      champion(playerTwo)
-      console.log(playerTwo + ' Wins!' + 'Winning combo bottom row')
-      console.log(gameBoard)
-
-      // [0, 4, 8 ]
-    } else if (gameBoard[0] === 'O' && gameBoard[4] === gameBoard[0] &&
-      gameBoard[8] === gameBoard[0] && gameBoard[0] !== '' && gameBoard[4]
-      !== '' && gameBoard[8] !== '') {
-      champion(playerTwo)
-      console.log(playerTwo + ' Wins!' + 'Winning combo diagonal')
-      console.log(gameBoard)
-
-      // [2, 5, 8]
-    } else if (gameBoard[2] === 'O' && gameBoard[5] === gameBoard[2] &&
-      gameBoard[8] === gameBoard[2] && gameBoard[2] !== '' && gameBoard[5]
-      !== '' && gameBoard[8] !== '') {
-      champion(playerTwo)
-      console.log(playerTwo + ' Wins!' + 'Winning combo right column')
-      console.log(gameBoard)
-
-      // [2, 4, 6]
-    } else if (gameBoard[2] === 'O' && gameBoard[4] === gameBoard[2] &&
-      gameBoard[6] === gameBoard[2] && gameBoard[2] !== '' && gameBoard[4]
-      !== '' && gameBoard[6] !== '') {
-      champion(playerTwo)
-      console.log(playerTwo + ' Wins!' + 'Winning combo diagonal')
-      console.log(gameBoard)
-
-      // [0, 3, 6]
-    } else if (gameBoard[0] === 'O' && gameBoard[3] === gameBoard[0] &&
-      gameBoard[6] === gameBoard[0] && gameBoard[0] !== '' && gameBoard[3]
-      !== '' && gameBoard[6] !== '') {
-      champion(playerTwo)
-      console.log(playerTwo + ' Wins!' + 'Winning combo left column')
-      console.log(gameBoard)
-
-      // [1, 4, 7,]
-    } else if (gameBoard[1] === 'O' && gameBoard[1] === gameBoard[4] &&
-      gameBoard[7] === gameBoard[1] && gameBoard[1] !== '' && gameBoard[4]
-    !== '' && gameBoard[7] !== '') {
-      champion(playerTwo)
-      console.log(playerTwo + ' Wins!' + ' Winning combo middle column')
-      console.log(gameBoard)
+  //      2.1.4 check for winner
 
 
-    } else if ((gameBoard[0] !== gameBoard[1] && gameBoard[2]) ||
-      (gameBoard[3] !== gameBoard[4] && gameBoard[5]) ||
-      (gameBoard[6] !== gameBoard[7] && gameBoard[8]) ||
-      (gameBoard[0] !== gameBoard[3] && gameBoard[6]) ||
-      (gameBoard[1] !== gameBoard[4] && gameBoard[7]) ||
-      (gameBoard[2] !== gameBoard[5] && gameBoard[8]) ||
-      (gameBoard[0] !== gameBoard[4] && gameBoard[8]) ||
-      (gameBoard[2] !== gameBoard[4] && gameBoard[6])) {
-      champion(!playerOne || !playerTwo)
-    } else {
-      changePlayer()
+
+  // start gameOver as false
+  let gameOver = false
+
+  // start winner as null
+  let winner = null
+
+  // [0, 1, 2] top row
+  if ((gameBoard[1] === gameBoard[0]) && (gameBoard[2] === gameBoard[0]) && (gameBoard[0] !== '')) {
+    winner = gameBoard[0]
+    gameOver = true
+
+    // [3, 4, 5] middle row
+  } else if ((gameBoard[4] === gameBoard[3]) && (gameBoard[5] === gameBoard[3]) && (gameBoard[3] !== '')) {
+    winner = gameBoard[4]
+    gameOver = true
+
+    // [6, 7, 8] bottom row
+  } else if ((gameBoard[7] === gameBoard[6]) && (gameBoard[8] === gameBoard[6]) && (gameBoard[6] !== '')) {
+    winner = gameBoard[8]
+    gameOver = true
+
+    // [0, 4, 8] diag top left
+  } else if ((gameBoard[4] === gameBoard[0]) && (gameBoard[8] === gameBoard[0]) && (gameBoard[0] !== '')) {
+    winner = gameBoard[4]
+    gameOver = true
+
+    // [2, 4, 6] diag top right
+  } else if ((gameBoard[4] === gameBoard[2]) && (gameBoard[6] === gameBoard[2]) && (gameBoard[2] !== '')) {
+    winner = gameBoard[4]
+    gameOver = true
+
+    // [2, 5, 8] right column
+  } else if ((gameBoard[5] === gameBoard[2]) && (gameBoard[8] === gameBoard[2]) && (gameBoard[2] !== '')) {
+    winner = gameBoard[8]
+    gameOver = true
+
+    // [1, 4, 7] middle column
+  } else if ((gameBoard[4] === gameBoard[1]) && (gameBoard[7] === gameBoard[1]) && (gameBoard[7] !== '')) {
+    winner = gameBoard[4]
+    gameOver = true
+
+    // [0, 3, 6] left column
+  } else if ((gameBoard[3] === gameBoard[0]) && (gameBoard[6] === gameBoard[0]) && (gameBoard[0] !== '')) {
+    winner = gameBoard[0]
+    gameOver = true
+  }
+  // 2.1.5 create game data object to send to API
+  const data = {
+    'game': {
+      'cell': {
+        'index': 0, // position on board
+        'value': 'x' // current user's turn
+      },
+      'over': false // if game is over or not
     }
   }
+
+  //  2.1.5.1 change player move for next turn
+  if (move === playerOne) {
+    move = playerTwo
+  } else {
+    move = playerOne
+  }
+
+  // 2.1.6 Pass game data to api.js function that makes API call
+  api.boardClick(data)
+    .then(ui.boardClickSuccess)
+    .catch(ui.boardClickFailure)
 }
-//      2.1.5 create game data object to send to API
-//      2.1.6 Pass game data to api.js function that makes API call
-// const data = {
-//   'game': {
-//     'cell': {
-//       'index': 0, // position on board
-//       'value': 'x' // current user's turn
-//     },
-//     'over': false // if game is over or not
-//   }
-// }
-// we will save this for later, focus on the problem above.
-// api.boardClick()
-//  .then(ui.boardClickSuccess)
-//  .catch(ui.boardClickFailure)
 
 const onGameHistory = (event) => {
   event.preventDefault()
@@ -281,7 +184,6 @@ const addHandlers = () => {
   $('#game-history').on('submit', onGameHistory)
   $('#game-status').on('submit', onGameStatus)
   $('td').on('click', onBoardClick)
-  $('td').on('click', addToBoard)
 }
 
 module.exports = {
