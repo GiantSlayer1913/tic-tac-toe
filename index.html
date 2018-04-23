@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Tic Tac Toe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Do not add `link` tags-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Do not add `script` tags-->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+
+</head>
+
+<body>
+  <h1>Welcome to Tic Tac and Toe!</h1>
+  <h4>Copyright © 2018 Tic Tac Toe Accounting LLC</h4>
+
+  <div id="message"></div>
+  <form id="sign-up" class="border">
+    <fieldset>
+      <legend>Sign up!</legend>
+      <input type="email" name="credentials[email]" placeholder="Email">
+      <input type="password" name="credentials[password]" placeholder="Password">
+      <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+      <input type="submit" value="Sign up!">
+    </fieldset>
+  </form>
+  <br>
+
+  <form id="sign-in" class="border">
+    <fieldset>
+      <legend>Sign in!</legend>
+      <input type="text" name="credentials[email]" placeholder="Email">
+      <input type="password" name="credentials[password]" placeholder="Password">
+      <input type="submit" value="Sign in!">
+    </fieldset>
+  </form>
+  <br>
+
+  <form id="change-password" class="border">
+    <fieldset>
+      <legend>Change Password!</legend>
+      <input type="password" name="passwords[old]" placeholder="Old Password">
+      <input type="password" name="passwords[new]" placeholder="New Password">
+      <input type="submit" value="Change Password!">
+    </fieldset>
+  </form>
+  <br>
+
+  <form id="sign-out" class="border">
+    <fieldset>
+      <legend>Sign Out!</legend>
+      <input type="submit" value="Sign Out!">
+    </fieldset>
+  </form>
+  <br>
+
+  <!-- <div class="gameControls"> -->
+  <div id="jumboTron"></div>
+  <br>
+    <!-- </div> -->
+    <form id="new-game" class="border">
+      <fieldset>
+        <input type="submit" value="New Game">
+      </fieldset>
+    </form>
+
+
+    <table id='board-click'>
+        <tbody>
+            <tr>
+              <td id="0"></td>
+              <td id="1"></td>
+              <td id="2"></td>
+            </tr>
+            <tr>
+              <td id="3"></td>
+              <td id="4"></td>
+              <td id="5"></td>
+            </tr>
+            <tr>
+              <td id="6"></td>
+              <td id="7"></td>
+              <td id="8"></td>
+            </tr>
+      </tbody>
+    </table>
+
+    <form id="game-history" class="border">
+      <fieldset>
+        <input type="submit" value="Game History">
+      </fieldset>
+    </form>
+
+</body>
+
+</html>
