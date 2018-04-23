@@ -108,7 +108,7 @@ const newGameFailure = () => {
 // Gameboard click functions
 const boardClickSuccess = (data) => {
   store.user = data.user
-  console.log('ui.boardClickSuccess')
+  console.log(data.user.game)
 }
 const boardClickFailure = (data) => {
   store.user = data.user
