@@ -45,7 +45,7 @@ const changePassword = function (data) {
 // Sign-out
 const signOut = function () {
   return $.ajax({
-    url: config.apiUrl + '/sign-out/' + store.user,
+    url: config.apiUrl + '/sign-out/' + store.user.id,
     method: 'DELETE',
     headers: {
       contentType: 'application/json',
