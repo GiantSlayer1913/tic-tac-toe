@@ -89,9 +89,8 @@ const checkWin = (gamBoard) => {
   for (let i = 0; i < gameBoard.length; i++) {
 
     // [0, 1, 2]
-    if ((gameBoard[0] === 'X') && (gameBoard[1] === gameBoard[0]) && (
-      gameBoard[2] === gameBoard[0]) && (gameBoard[0] !== '') &&
-      (gameBoard[1] !== '') && (gameBoard[2] !== '')) {
+    if ((gameBoard[0] === gameBoard[1] === gameBoard[2]) && (gameBoard[0] !== ''
+     && gameBoard[1] !== '' && gameBoard[2] !== '')) {
       champion(playerOne)
       console.log(playerOne + ' Wins!' + ' Winning combo top row')
       console.log(gameBoard)
