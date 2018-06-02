@@ -1,4 +1,4 @@
-# ID=2 sh curl-scripts/json/change-password.sh
+# sh curl-scripts/json/change-password.sh
 
 curl "https://wdi-library-api.herokuapp.com/change-password" \
   --include \

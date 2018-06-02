@@ -7,7 +7,7 @@ curl "https://wdi-library-api.herokuapp.com/sign-in" \
   --data '{
     "credentials": {
       "email": "'"${EMAIL}"'",
-      "password": "'"${PASSWORD}"'"
+      "password": "'"${PASS}"'"
     }
   }'
 

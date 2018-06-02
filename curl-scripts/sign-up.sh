@@ -7,8 +7,8 @@ curl "https://wdi-library-api.herokuapp.com/sign-up" \
   --data '{
     "credentials": {
       "email": "'"${EMAIL}"'",
-      "password": "'"${PASSWORD}"'",
-      "password_confirmation": "'"${PASSWORD_CONFIRMATION}"'"
+      "password": "'"${PASS}"'",
+      "password_confirmation": "'"${PASS}"'"
     }
   }'
 
