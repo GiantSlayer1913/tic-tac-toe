@@ -1,6 +1,5 @@
 const config = require('./config')
 const store = require('./store')
-const ui = require('./ui')
 
 // Sign-up
 const signUp = function (data) {
@@ -62,25 +61,21 @@ const newGame = (data) => {
     method: 'POST',
     headers: {
       contentType: 'application/json',
-      Authorization: `Token token=${store.user.token}`
-    }
+      Authorization: `Token token=` + store.data
+    },
+    data
   })
-    .then(function (data) {
-      console.log('after create, data is', data)
-      store.game = data.game
-      ui.newGameSuccess()
-    })
 }
 
 // Gameboard api
 const boardClick = (data) => {
   console.log('api.boardClick is clicking')
   return $.ajax({
-    url: config.apiUrl + '/games/' + store.game.id,
+    url: config.apiUrl + '/games/' + store.game,
     method: 'PATCH',
     headers: {
       contentType: 'application/json',
-      Authorization: `Token token= ${store.user.token}`
+      Authorization: `Token token=` + store.data
     },
     data
   })

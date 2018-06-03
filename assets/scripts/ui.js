@@ -3,7 +3,6 @@ const store = require('./store')
 // Sign-up functions
 const signUpSuccess = function (data) {
   console.log('ui-signUpSuccess working')
-  console.log(data)
   $('#message').text('Successfully signed up')
   $('#message').css('background-color', 'green')
   $('#sign-up').css('display', 'none')
@@ -86,20 +85,25 @@ const gameHistorySuccess = (data) => {
   $('#jumboTron').text('History Successful')
   $('#jumboTron').css('background-color', 'green')
 }
-const gameHistoryFailure = (data) => {
+const gameHistoryFailure = () => {
   $('#message').css('display', 'block')
   $('#message').text('Cannot show history')
   $('#message').css('background-color', 'red')
 }
 
 // New Game functions
-const newGameSuccess = () => {
-  $('#jumboTron').text('X')
+const newGameSuccess = (data) => {
+  console.log(data)
+  console.log('newGameSuccess is logging')
+  // $('#jumboTron').text('X')
+  let gameBoard = ['', '', '', '', '', '', '', '', '']
+
   $('#jumboTron').css('display', 'block')
   $('#message').text('Begin New Game')
   $('#message').css('background-color', 'green')
 }
 const newGameFailure = () => {
+  console.log('newGameFailure is logging')
   $('#message').css('display', 'block')
   $('#jumboTron').text('Cannot Begin New Game')
   $('#jumboTron').css('background-color', 'red')
